@@ -19,11 +19,19 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "jquery": "^3.3.1",
+    "jquery.easing": "^1.4.1",
     "popper.js": "^1.12.9",
-    "jquery.easing": "^1.4.1"
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babelify": "^8.0.0",
+    "browserify": "^15.2.0",
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1"
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.2.0",
+    "gulp-eslint": "^4.0.2",
+    "gulp-open": "^2.1.0",
+    "vinyl-source-stream": "^2.0.0"
   }
 }
