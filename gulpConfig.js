@@ -13,9 +13,13 @@ module.exports = {
                 './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
             ],
             css: [
-                'node_modules/bootstrap/dist/css/bootstrap.min.css',
-                'node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
-                'node_modules/toastr/build/toastr.min.css'
+                './node_modules/bootstrap/dist/css/bootstrap.min.css',
+                './node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
+                './node_modules/toastr/build/toastr.min.css',
+                './node_modules/font-awesome/css/font-awesome.min.css'
+            ],
+            fonts: [
+                './node_modules/font-awesome/fonts/fontawesome-webfont.*'
             ]
         },
         img: './src/img/*',

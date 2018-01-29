@@ -3,11 +3,13 @@ var connect = require('gulp-connect');
 var open = require('gulp-open');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
+var clean = require('gulp-clean');
 var sass = require('gulp-sass');
 var lint = require('gulp-eslint');
 var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
+var sequence = require('run-sequence');
 
 var config = require('./gulpConfig');
 var baseurl = config.protocol+'://'+config.domain;
@@ -72,13 +74,20 @@ gulp.task('vendor-css', function() {
         .pipe(concat('vendor.css'))
         .pipe(gulp.dest('./dist/css'));
 });
-gulp.task('vendor', ['vendor-js', 'vendor-css']);
+gulp.task('vendor-fonts', function() {
+    gulp.src(config.paths.vendor.fonts)
+    .pipe(gulp.dest('./dist/fonts'));
+});
+gulp.task('vendor', ['vendor-js', 'vendor-css', 'vendor-fonts']);
 
-
+gulp.task('clean', function () {
+    gulp.src(config.paths.dist, {read: false})
+        .pipe(clean());
+});
 gulp.task('watch', function(){
     gulp.watch(config.paths.html, ['html']);
     gulp.watch([config.paths.entry, config.paths.js], ['js', 'lint']);
     gulp.watch([config.paths.sass, config.paths.css], ['sass'])
 });
 
-gulp.task('default', ['open', 'html', 'js', 'sass', 'vendor', 'img', 'lint', 'watch']);
+gulp.task('default', [/*'clean',*/ 'open', 'html', 'js', 'sass', 'vendor', 'img', 'lint', 'watch']);
