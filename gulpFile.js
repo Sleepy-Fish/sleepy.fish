@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var connect = require('gulp-connect');
 var open = require('gulp-open');
 var concat = require('gulp-concat');
+var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var lint = require('gulp-eslint');
 var browserify = require('browserify');
@@ -48,15 +49,10 @@ gulp.task('js', function(){
         .pipe(connect.reload());
 });
 
-gulp.task('css', function(){
-    gulp.src(config.paths.css)
-        .pipe(concat('bundle.css'))
-        .pipe(gulp.dest(config.paths.dist + '/css'))
-});
-
 gulp.task('sass', function () {
     gulp.src(config.paths.sass)
         .pipe(sass().on('error', console.error.bind(console)))
+        .pipe(rename('bundle.css'))
         .pipe(gulp.dest(config.paths.dist + '/css'));
 });
 
@@ -82,7 +78,7 @@ gulp.task('vendor', ['vendor-js', 'vendor-css']);
 gulp.task('watch', function(){
     gulp.watch(config.paths.html, ['html']);
     gulp.watch([config.paths.entry, config.paths.js], ['js', 'lint']);
-    gulp.watch(config.paths.css, ['css'])
+    gulp.watch([config.paths.sass, config.paths.css], ['sass'])
 });
 
-gulp.task('default', ['open', 'html', 'js', 'css', 'sass', 'vendor', 'img', 'lint', 'watch']);
+gulp.task('default', ['open', 'html', 'js', 'sass', 'vendor', 'img', 'lint', 'watch']);

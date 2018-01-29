@@ -5,7 +5,7 @@ module.exports = {
     paths: {
         html: './src/*.html',
         js: './src/js/**/*.js',
-        css: './src/css/**/*.css',
+        css: './src/scss/**/*.scss',
         vendor: {
             js: [
                 './node_modules/jquery/dist/jquery.min.js',
