@@ -32,6 +32,7 @@
     "gulp-connect": "^5.2.0",
     "gulp-eslint": "^4.0.2",
     "gulp-open": "^2.1.0",
+    "gulp-sass": "^3.1.0",
     "vinyl-source-stream": "^2.0.0"
   }
 }

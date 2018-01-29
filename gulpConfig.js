@@ -20,6 +20,7 @@ module.exports = {
         },
         img: './src/img/*',
         dist: './dist',
-        entry: './src/index.js'
+        entry: './src/index.js',
+        sass: './src/index.scss'
     }
 }

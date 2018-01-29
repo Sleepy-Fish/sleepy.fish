@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var connect = require('gulp-connect');
 var open = require('gulp-open');
 var concat = require('gulp-concat');
+var sass = require('gulp-sass');
 var lint = require('gulp-eslint');
 var browserify = require('browserify');
 var babelify = require('babelify');
@@ -53,6 +54,12 @@ gulp.task('css', function(){
         .pipe(gulp.dest(config.paths.dist + '/css'))
 });
 
+gulp.task('sass', function () {
+    gulp.src(config.paths.sass)
+        .pipe(sass().on('error', console.error.bind(console)))
+        .pipe(gulp.dest(config.paths.dist + '/css'));
+});
+
 gulp.task('img', function(){
     gulp.src(config.paths.img)
         .pipe(gulp.dest(config.paths.dist + '/img'));
@@ -78,4 +85,4 @@ gulp.task('watch', function(){
     gulp.watch(config.paths.css, ['css'])
 });
 
-gulp.task('default', ['open', 'html', 'js', 'css', 'vendor', 'img', 'lint', 'watch']);
+gulp.task('default', ['open', 'html', 'js', 'css', 'sass', 'vendor', 'img', 'lint', 'watch']);
