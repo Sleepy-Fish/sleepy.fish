@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var clean = require('gulp-clean');
 var sass = require('gulp-sass');
+var merge = require('merge-stream');
 var lint = require('gulp-eslint');
 var browserify = require('browserify');
 var babelify = require('babelify');
@@ -70,9 +71,17 @@ gulp.task('vendor-js', function() {
 });
 
 gulp.task('vendor-css', function() {
-    gulp.src(config.paths.vendor.css)
+    var scssStream = gulp.src(config.paths.vendor.scss)
+        .pipe(sass().on('error', console.error.bind(console)))
+        .pipe(concat('scss-files.scss'));
+    
+    var cssStream = gulp.src(config.paths.vendor.css)
+        .pipe(concat('css-files.css'));
+
+    merge(scssStream, cssStream)
         .pipe(concat('vendor.css'))
         .pipe(gulp.dest('./dist/css'));
+
 });
 gulp.task('vendor-fonts', function() {
     gulp.src(config.paths.vendor.fonts)
