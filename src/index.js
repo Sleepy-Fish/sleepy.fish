@@ -1,1 +1,1 @@
-require('./js/scrolling-nav');
+require('./js/example');
