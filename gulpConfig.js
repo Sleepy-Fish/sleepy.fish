@@ -2,10 +2,18 @@ module.exports = {
     port: 9005,
     protocol: 'http',
     domain: 'localhost',
+    entry: 'dist/index.html',
     paths: {
-        html: './src/*.html',
-        js: './src/js/**/*.js',
-        css: './src/scss/**/*.scss',
+        index: {
+            njk: './src/index.njk',
+            js: './src/index.js',
+            scss: './src/index.scss',
+        },
+        glob:{
+            njk: './src/**/*index.njk',
+            js: './src/js/**/*.js',
+            scss: './src/scss/**/*.scss'
+        },
         vendor: {
             js: [
                 './node_modules/jquery/dist/jquery.min.js',
@@ -22,8 +30,6 @@ module.exports = {
             ]
         },
         img: './src/img/*',
-        dist: './dist',
-        entry: './src/index.js',
-        sass: './src/index.scss'
+        dist: './dist'
     }
 }

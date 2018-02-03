@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A productless brand for web tech and games">
     <meta name="author" content="J Riley Harrington">
-    <title>Sleepy Fish</title>
+    <title>{{ page_title }}</title>
     <!-- Vendor Styling -->
     <link href="./css/vendor.css" rel="stylesheet">
     <link href="./css/bundle.css" rel="stylesheet">
   </head>
   <body>
+    {% include "njk/header.njk" %}
     <div class="section no-pad-bot" id="index-banner">
       <div class="container">
         <br><br>
@@ -22,9 +23,11 @@
           <a href="#" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
         </div>
         <br><br>
+        Welcome to a world of sleepyfish
   
       </div>
     </div>
+    {% include "njk/footer.njk" %}
   </body>
   <!-- JavaScript -->
   <script src="./js/vendor.js"></script>

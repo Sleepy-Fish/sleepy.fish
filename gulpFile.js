@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var nunjucks = require('gulp-nunjucks');
 var connect = require('gulp-connect');
 var open = require('gulp-open');
 var concat = require('gulp-concat');
@@ -26,24 +27,26 @@ gulp.task('connect', function(){
 });
 
 gulp.task('open', ['connect'], function(){
-    gulp.src('dist/index.html')
+    gulp.src(config.entry)
         .pipe(open({uri: baseurl + ':' + config.port + '/'}));
 });
 
 gulp.task('lint', function() {
-    return gulp.src(config.paths.js)
+    return gulp.src(config.paths.glob.js)
         .pipe(lint({configFile: 'eslint.config.json'}))
         .pipe(lint.format());
 })
 
-gulp.task('html', function(){
-    gulp.src(config.paths.html)
+gulp.task('njk', function(){
+    gulp.src(config.paths.index.njk)
+        .pipe(nunjucks.compile({page_title: 'Sleepy Fish'}))
+        .pipe(rename({extname:'.html'}))
         .pipe(gulp.dest(config.paths.dist))
         .pipe(connect.reload());
 });
 
 gulp.task('js', function(){
-    browserify(config.paths.entry)
+    browserify(config.paths.index.js)
         .transform(babelify)
         .bundle()
         .on('error', console.error.bind(console))
@@ -52,8 +55,8 @@ gulp.task('js', function(){
         .pipe(connect.reload());
 });
 
-gulp.task('sass', function () {
-    gulp.src(config.paths.sass)
+gulp.task('scss', function () {
+    gulp.src(config.paths.index.scss)
         .pipe(sass().on('error', console.error.bind(console)))
         .pipe(rename('bundle.css'))
         .pipe(gulp.dest(config.paths.dist + '/css'));
@@ -94,9 +97,9 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 gulp.task('watch', function(){
-    gulp.watch(config.paths.html, ['html']);
-    gulp.watch([config.paths.entry, config.paths.js], ['js', 'lint']);
-    gulp.watch([config.paths.sass, config.paths.css], ['sass'])
+    gulp.watch(config.paths.glob.njk, ['njk']);
+    gulp.watch([config.paths.index.js, config.paths.glob.js], ['js', 'lint']);
+    gulp.watch([config.paths.index.scss, config.paths.glob.scss], ['scss'])
 });
 
-gulp.task('default', [/*'clean',*/ 'open', 'html', 'js', 'sass', 'vendor', 'img', 'lint', 'watch']);
+gulp.task('default', [/*'clean',*/ 'open', 'njk', 'js', 'scss', 'vendor', 'img', 'lint', 'watch']);
