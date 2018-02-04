@@ -9,8 +9,8 @@ module.exports = {
             js: './src/index.js',
             scss: './src/index.scss',
         },
-        glob:{
-            njk: './src/**/*index.njk',
+        glob: {
+            njk: './src/**/*.njk',
             js: './src/js/**/*.js',
             scss: './src/scss/**/*.scss'
         },
@@ -20,14 +20,25 @@ module.exports = {
                 './node_modules/materialize-css/dist/js/materialize.js'
             ],
             css: [
-                './node_modules/font-awesome/css/font-awesome.min.css',
-                './node_modules/materialize-css/dist/css/materialize.min.css'
+                './node_modules/font-awesome/css/font-awesome.min.css'
             ],
-            scss: [],
+            scss: [
+                './node_modules/materialize-css/sass/materialize.scss'
+            ],
             fonts: [
                 './node_modules/font-awesome/fonts/fontawesome-webfont.*',
                 './node_modules/materialize-css/dist/fonts/roboto/*'
-            ]
+            ],
+            overrides: [{
+                trg: {
+                    path: './node_modules/materialize-css/sass/components/',
+                    file: '_variables.scss'
+                },
+                src: {
+                    path: './src/scss/overrides/',
+                    file: '_materialize.scss'
+                }
+            }]
         },
         img: './src/img/*',
         dist: './dist'
