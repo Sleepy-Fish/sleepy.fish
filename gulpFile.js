@@ -70,7 +70,7 @@ gulp.task('img', function() {
 gulp.task('vendor-override', function() {
     var overrides = []
     for (var override of config.paths.vendor.overrides) {
-        overrides.push(gulp.src(override.src.path + override.src.file)
+        overrides.push(gulp.src(config.paths.vendor.override + override.src)
             .pipe(rename(override.trg.file))
             .pipe(gulp.dest(override.trg.path)))
     }
@@ -112,7 +112,7 @@ gulp.task('watch', function() {
     gulp.watch(config.paths.glob.njk, ['njk']);
     gulp.watch([config.paths.index.js, config.paths.glob.js], ['js', 'lint']);
     gulp.watch([config.paths.index.scss, config.paths.glob.scss], ['scss']);
-    gulp.watch('./src/scss/overrides/*', ['vendor']);
+    gulp.watch(config.paths.vendor.override + '*', ['vendor']);
 });
 
 gulp.task('default', function() {

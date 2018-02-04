@@ -29,15 +29,13 @@ module.exports = {
                 './node_modules/font-awesome/fonts/fontawesome-webfont.*',
                 './node_modules/materialize-css/dist/fonts/roboto/*'
             ],
+            override: './src/scss/overrides/',
             overrides: [{
                 trg: {
                     path: './node_modules/materialize-css/sass/components/',
                     file: '_variables.scss'
                 },
-                src: {
-                    path: './src/scss/overrides/',
-                    file: '_materialize.scss'
-                }
+                src: '_materialize.scss'
             }]
         },
         img: './src/img/*',
