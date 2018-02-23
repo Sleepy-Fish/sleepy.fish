@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var nunjucks = require('gulp-nunjucks');
 var connect = require('gulp-connect');
 var open = require('gulp-open');
 var concat = require('gulp-concat');
@@ -13,10 +14,10 @@ var source = require('vinyl-source-stream');
 var sequence = require('run-sequence');
 
 var config = require('./gulpConfig');
-var baseurl = config.protocol+'://'+config.domain;
+var baseurl = config.protocol + '://' + config.domain;
 
-gulp.task('connect', function(){
-    connect.server({
+gulp.task('connect', function() {
+    return connect.server({
         root: ['dist'],
         host: config.domain,
         port: config.port,
@@ -25,25 +26,27 @@ gulp.task('connect', function(){
     });
 });
 
-gulp.task('open', ['connect'], function(){
-    gulp.src('dist/index.html')
-        .pipe(open({uri: baseurl + ':' + config.port + '/'}));
+gulp.task('open', ['connect'], function() {
+    return gulp.src(config.entry)
+        .pipe(open({ uri: baseurl + ':' + config.port + '/' }));
 });
 
 gulp.task('lint', function() {
-    return gulp.src(config.paths.js)
-        .pipe(lint({configFile: 'eslint.config.json'}))
+    return gulp.src(config.paths.glob.js)
+        .pipe(lint({ configFile: 'eslint.config.json' }))
         .pipe(lint.format());
 })
 
-gulp.task('html', function(){
-    gulp.src(config.paths.html)
+gulp.task('njk', function() {
+    return gulp.src(config.paths.index.njk)
+        .pipe(nunjucks.compile({ page_title: 'Sleepy Fish' }))
+        .pipe(rename({ extname: '.html' }))
         .pipe(gulp.dest(config.paths.dist))
         .pipe(connect.reload());
 });
 
-gulp.task('js', function(){
-    browserify(config.paths.entry)
+gulp.task('js', function() {
+    return browserify(config.paths.index.js)
         .transform(babelify)
         .bundle()
         .on('error', console.error.bind(console))
@@ -52,20 +55,30 @@ gulp.task('js', function(){
         .pipe(connect.reload());
 });
 
-gulp.task('sass', function () {
-    gulp.src(config.paths.sass)
+gulp.task('scss', function() {
+    return gulp.src(config.paths.index.scss)
         .pipe(sass().on('error', console.error.bind(console)))
         .pipe(rename('bundle.css'))
         .pipe(gulp.dest(config.paths.dist + '/css'));
 });
 
-gulp.task('img', function(){
-    gulp.src(config.paths.img)
+gulp.task('img', function() {
+    return gulp.src(config.paths.img)
         .pipe(gulp.dest(config.paths.dist + '/img'));
 })
 
+gulp.task('vendor-override', function() {
+    var overrides = []
+    for (var override of config.paths.vendor.overrides) {
+        overrides.push(gulp.src(config.paths.vendor.override + override.src)
+            .pipe(rename(override.trg.file))
+            .pipe(gulp.dest(override.trg.path)))
+    }
+    return merge(...overrides);
+});
+
 gulp.task('vendor-js', function() {
-    gulp.src(config.paths.vendor.js)
+    return gulp.src(config.paths.vendor.js)
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest('./dist/js'));
 });
@@ -74,29 +87,34 @@ gulp.task('vendor-css', function() {
     var scssStream = gulp.src(config.paths.vendor.scss)
         .pipe(sass().on('error', console.error.bind(console)))
         .pipe(concat('scss-files.scss'));
-    
+
     var cssStream = gulp.src(config.paths.vendor.css)
         .pipe(concat('css-files.css'));
 
-    merge(scssStream, cssStream)
+    return merge(scssStream, cssStream)
         .pipe(concat('vendor.css'))
         .pipe(gulp.dest('./dist/css'));
 
 });
 gulp.task('vendor-fonts', function() {
-    gulp.src(config.paths.vendor.fonts)
-    .pipe(gulp.dest('./dist/fonts'));
+    return gulp.src(config.paths.vendor.fonts)
+        .pipe(gulp.dest('./dist/fonts'));
 });
-gulp.task('vendor', ['vendor-js', 'vendor-css', 'vendor-fonts']);
+gulp.task('vendor', function() {
+    sequence('vendor-override', ['vendor-js', 'vendor-css', 'vendor-fonts'])
+});
 
-gulp.task('clean', function () {
-    gulp.src(config.paths.dist, {read: false})
+gulp.task('clean', function() {
+    return gulp.src(config.paths.dist, { read: false })
         .pipe(clean());
 });
-gulp.task('watch', function(){
-    gulp.watch(config.paths.html, ['html']);
-    gulp.watch([config.paths.entry, config.paths.js], ['js', 'lint']);
-    gulp.watch([config.paths.sass, config.paths.css], ['sass'])
+gulp.task('watch', function() {
+    gulp.watch(config.paths.glob.njk, ['njk']);
+    gulp.watch([config.paths.index.js, config.paths.glob.js], ['js', 'lint']);
+    gulp.watch([config.paths.index.scss, config.paths.glob.scss], ['scss']);
+    gulp.watch(config.paths.vendor.override + '*', ['vendor']);
 });
 
-gulp.task('default', [/*'clean',*/ 'open', 'html', 'js', 'sass', 'vendor', 'img', 'lint', 'watch']);
+gulp.task('default', function() {
+    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint'], ['open', 'watch'])
+});
