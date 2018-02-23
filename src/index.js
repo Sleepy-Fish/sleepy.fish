@@ -1,1 +1,1 @@
-require('./js/example');
+require('./js/auth');
