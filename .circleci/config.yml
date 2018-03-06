@@ -11,12 +11,11 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
       - run: npm install
-      - run: npm install gulp -g
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
-      - run: gulp build
+      - run: npm run dist
       - deploy:
-          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then echo "deploy now"; 
+          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then echo "deploy now"; fi

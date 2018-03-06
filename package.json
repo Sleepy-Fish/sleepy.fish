@@ -4,7 +4,9 @@
     "description": "Public facing website for Sleepy Fish",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\""
+        "test": "echo \"Error: no test specified\"",
+        "dev": "gulp",
+        "dist": "gulp build"
     },
     "repository": {
         "type": "git",
