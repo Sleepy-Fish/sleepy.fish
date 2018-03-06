@@ -18,5 +18,7 @@ jobs:
       - run: npm test
       - run: npm run dist
   deploy:
+    machine:
+        enabled: true
     steps:
       - command: if [ "${CIRCLE_BRANCH}" == "master" ]; then echo "deploy now"; fi
