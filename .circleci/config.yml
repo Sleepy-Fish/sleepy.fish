@@ -18,9 +18,6 @@ jobs:
       - run: npm test
       - run: gulp build
       - deploy:
-        command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            echo "deploy now"
-          fi
+        command: if [ "${CIRCLE_BRANCH}" == "master" ]; then echo "deploy now"; fi
 
 
