@@ -17,5 +17,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
       - run: npm run dist
-      - deploy:
-          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then echo "deploy now"; fi
+  deploy:
+    steps:
+      - command: if [ "${CIRCLE_BRANCH}" == "master" ]; then echo "deploy now"; fi
