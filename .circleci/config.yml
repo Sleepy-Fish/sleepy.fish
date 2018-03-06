@@ -18,6 +18,8 @@ jobs:
       - run: npm test
       - run: gulp build
       - deployment:
-        commands:
-          - scp -r dist/* circleci@sleepy.fish:/home/circleci/sleepy.fish/
+          production:
+            branch: master
+            commands:
+              - scp -r dist/* circleci@sleepy.fish:/home/circleci/sleepy.fish/
 
