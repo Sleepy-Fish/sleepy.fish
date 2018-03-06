@@ -17,9 +17,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
       - run: gulp build
-      - deployment:
-          production:
-            branch: master
-            commands:
-              - scp -r dist/* circleci@sleepy.fish:/home/circleci/sleepy.fish/
+      - deploy:
+        command: |
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            echo "deploy now"
+          fi
+
 
