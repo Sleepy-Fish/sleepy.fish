@@ -115,6 +115,10 @@ gulp.task('watch', function() {
     gulp.watch(config.paths.vendor.override + '*', ['vendor']);
 });
 
+gulp.task('build', function(){
+    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint']);
+});
+
 gulp.task('default', function() {
-    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint'], ['open', 'watch'])
+    sequence('build', ['open', 'watch'])
 });
