@@ -17,7 +17,8 @@ jobs:
       - run: npm run dist
       - persist_to_workspace:
           root: dist/
-          at: /
+          paths:
+            - /
   test:
     machine:
         enabled: true
