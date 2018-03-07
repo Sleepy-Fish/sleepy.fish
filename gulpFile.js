@@ -5,6 +5,8 @@ var open = require('gulp-open');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var clean = require('gulp-clean');
+var minifyJS = require('gulp-minify');
+var minifyCSS = require('gulp-clean-css');
 var sass = require('gulp-sass');
 var merge = require('merge-stream');
 var lint = require('gulp-eslint');
@@ -115,10 +117,23 @@ gulp.task('watch', function() {
     gulp.watch(config.paths.vendor.override + '*', ['vendor']);
 });
 
+gulp.task('minify', function(){
+    gulp.src('dist/js/*.js')
+        .pipe(minifyJS({ext:{src:'-debug.js',min:'.js'}}))
+        .pipe(gulp.dest('dist/js'))
+    gulp.src('dist/css/*.css')
+        .pipe(minifyCSS({compatibility: 'ie8'}))
+        .pipe(gulp.dest('dist/css'));
+});
+
 gulp.task('build', function(){
+    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint'], 'minify');
+});
+
+gulp.task('dev-build', function(){
     sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint']);
 });
 
 gulp.task('default', function() {
-    sequence('build', ['open', 'watch'])
+    sequence('dev-build', ['open', 'watch'])
 });
