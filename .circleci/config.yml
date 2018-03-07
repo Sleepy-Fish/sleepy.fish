@@ -19,8 +19,8 @@ jobs:
       - persist_to_workspace:
            root: ~/project/dist
            paths:
-            - build/
-            - test/
+            - ./build/
+            - ./test/
   test:
     machine:
         enabled: true
