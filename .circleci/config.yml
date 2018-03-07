@@ -15,29 +15,27 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run dist
+      - run: pwd
+      - persist_to_workspace:
+           root: ~/project/dist
+           paths:
+            - .
   test:
     machine:
         enabled: true
     steps:
-      - checkout
-      - run: npm test
+      - attach_workspace:
+          at: .
+      - run: pwd
+      #- run: npm test
   deploy:
-    docker:
-      - image: circleci/node:7.10
+    machine:
+        enabled: true
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-      - run: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm run dist
+      - attach_workspace:
+          at: .
       - deploy:
-          command: scp -oStrictHostKeyChecking=no -r dist/* circleci@sleepy.fish:/var/www/sleepy.fish
+          command: scp -oStrictHostKeyChecking=no -r /* circleci@sleepy.fish:/var/www/sleepy.fish
 workflows:
   version: 2
   launch:
