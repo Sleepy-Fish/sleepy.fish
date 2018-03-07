@@ -19,11 +19,13 @@ jobs:
     machine:
         enabled: true
     steps:
+      - checkout
       - run: npm test
   deploy:
     machine:
         enabled: true
     steps:
+      - checkout
       - deploy:
           command: scp -oStrictHostKeyChecking=no -r dist/* circleci@sleepy.fish:/var/www/sleepy.fish
 workflows:
