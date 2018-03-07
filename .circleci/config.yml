@@ -16,8 +16,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run dist
       - run: pwd
-      - run: ls .
-      - run: ls dist
+      - run: ls dist/build
+      - run: ls dist/test
       - persist_to_workspace:
            root: ~/
            paths:
