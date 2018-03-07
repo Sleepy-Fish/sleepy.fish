@@ -15,7 +15,34 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: npm test
       - run: npm run dist
+  test:
+    docker:
+      - image: circleci/node:7.10
+    steps:
+      - checkout
+      - run: npm test
+  deploy:
+    docker:
+      - image: circleci/node:7.10
+    steps:
       - deploy:
           command: if [ "${CIRCLE_BRANCH}" == "master" ]; then scp -oStrictHostKeyChecking=no -r dist/* circleci@sleepy.fish:/var/www/sleepy.fish; fi
+workflows:
+  version: 2
+  launch:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
+
+
+    
