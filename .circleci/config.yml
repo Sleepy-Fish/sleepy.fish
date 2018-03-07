@@ -18,4 +18,4 @@ jobs:
       - run: npm test
       - run: npm run dist
       - deploy:
-          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then ssh -oStrictHostKeyChecking=no circleci@sleepy.fish hostname && ssh -oStrictHostKeyChecking=no circleci@sleepy.fish touch /var/www/sleepy.fish/foo && scp -oStrictHostKeyChecking=no -r dist/* circleci@sleepy.fish:/var/www/sleepy.fish; fi
+          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then scp -oStrictHostKeyChecking=no -r dist/* circleci@sleepy.fish:/var/www/sleepy.fish; fi
