@@ -22,8 +22,8 @@ jobs:
       - checkout
       - run: npm test
   deploy:
-    machine:
-        enabled: true
+    docker:
+      - image: circleci/node:7.10
     steps:
       - checkout
       - restore_cache:
