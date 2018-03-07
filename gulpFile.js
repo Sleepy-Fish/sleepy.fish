@@ -21,7 +21,7 @@ var baseurl = config.protocol + '://' + config.domain;
 
 gulp.task('connect', function() {
     return connect.server({
-        root: ['dist'],
+        root: [config.paths.dist.build],
         host: config.domain,
         port: config.port,
         base: baseurl,
@@ -44,7 +44,7 @@ gulp.task('njk', function() {
     return gulp.src(config.paths.index.njk)
         .pipe(nunjucks.compile({ page_title: 'Sleepy Fish' }))
         .pipe(rename({ extname: '.html' }))
-        .pipe(gulp.dest(config.paths.dist))
+        .pipe(gulp.dest(config.paths.dist.build))
         .pipe(connect.reload());
 });
 
@@ -54,7 +54,7 @@ gulp.task('js', function() {
         .bundle()
         .on('error', console.error.bind(console))
         .pipe(source('bundle.js'))
-        .pipe(gulp.dest(config.paths.dist + '/js'))
+        .pipe(gulp.dest(config.paths.dist.build + '/js'))
         .pipe(connect.reload());
 });
 
@@ -62,12 +62,12 @@ gulp.task('scss', function() {
     return gulp.src(config.paths.index.scss)
         .pipe(sass().on('error', console.error.bind(console)))
         .pipe(rename('bundle.css'))
-        .pipe(gulp.dest(config.paths.dist + '/css'));
+        .pipe(gulp.dest(config.paths.dist.build + '/css'));
 });
 
 gulp.task('img', function() {
     return gulp.src(config.paths.img)
-        .pipe(gulp.dest(config.paths.dist + '/img'));
+        .pipe(gulp.dest(config.paths.dist.build + '/img'));
 })
 
 gulp.task('vendor-override', function() {
@@ -83,7 +83,7 @@ gulp.task('vendor-override', function() {
 gulp.task('vendor-js', function() {
     return gulp.src(config.paths.vendor.js)
         .pipe(concat('vendor.js'))
-        .pipe(gulp.dest('./dist/js'));
+        .pipe(gulp.dest(config.paths.dist.build+'/js'));
 });
 
 gulp.task('vendor-css', function() {
@@ -96,19 +96,19 @@ gulp.task('vendor-css', function() {
 
     return merge(scssStream, cssStream)
         .pipe(concat('vendor.css'))
-        .pipe(gulp.dest('./dist/css'));
+        .pipe(gulp.dest(config.paths.dist.build+'/css'));
 
 });
 gulp.task('vendor-fonts', function() {
     return gulp.src(config.paths.vendor.fonts)
-        .pipe(gulp.dest('./dist/fonts'));
+        .pipe(gulp.dest(config.paths.dist.build+'/fonts'));
 });
 gulp.task('vendor', function() {
     sequence('vendor-override', ['vendor-js', 'vendor-css', 'vendor-fonts'])
 });
 
 gulp.task('clean', function() {
-    return gulp.src(config.paths.dist, { read: false })
+    return gulp.src([config.paths.dist.build, config.paths.dist.test], { read: false })
         .pipe(clean());
 });
 gulp.task('watch', function() {
@@ -119,19 +119,24 @@ gulp.task('watch', function() {
 });
 
 gulp.task('minify', function(){
-    gulp.src('dist/js/*.js')
+    gulp.src(config.paths.dist.build+'/js/*.js')
         .pipe(minifyJS({ext:{src:'-debug.js',min:'.js'}}))
-        .pipe(gulp.dest('dist/js'))
-    gulp.src('dist/css/*.css')
+        .pipe(gulp.dest(config.paths.dist.build+'/js'))
+    gulp.src(config.paths.dist.build+'/css/*.css')
         .pipe(purge({
-            content: ["dist/**/*.html"]
+            content: [config.paths.dist.build+'/**/*.html']
         }))
         .pipe(minifyCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('dist/css'));
+        .pipe(gulp.dest(config.paths.dist.build+'/css'));
+});
+
+gulp.task('test', function(){
+    gulp.src('./test/*')
+        .pipe(gulp.dest(config.paths.dist.test))
 });
 
 gulp.task('build', function(){
-    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint'], 'minify');
+    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint', 'test'], 'minify');
 });
 
 gulp.task('dev-build', function(){

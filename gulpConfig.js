@@ -2,7 +2,7 @@ module.exports = {
     port: 9005,
     protocol: 'http',
     domain: 'localhost',
-    entry: 'dist/index.html',
+    entry: 'dist/build/index.html',
     paths: {
         index: {
             njk: './src/index.njk',
@@ -39,6 +39,9 @@ module.exports = {
             }]
         },
         img: './src/img/*',
-        dist: './dist'
+        dist: {
+            build: './dist/build',
+            test: './dist/test'
+        }
     }
 }
