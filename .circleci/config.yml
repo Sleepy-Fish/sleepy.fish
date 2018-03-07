@@ -32,8 +32,8 @@ jobs:
     machine:
         enabled: true
     steps:
-       - attach_workspace:
-           at: /dist
+      - attach_workspace:
+          at: /dist
       - deploy:
           command: scp -oStrictHostKeyChecking=no -r /* circleci@sleepy.fish:/var/www/sleepy.fish
 workflows:
