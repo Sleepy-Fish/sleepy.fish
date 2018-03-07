@@ -21,8 +21,7 @@ jobs:
       - persist_to_workspace:
            root: .
            paths:
-            - dist/build/
-            - dist/test/
+            - .
   test:
     machine:
         enabled: true
