@@ -12,6 +12,6 @@
 
     },
     "globals": {
-
+        "Auth0Lock": false
     }
 }
