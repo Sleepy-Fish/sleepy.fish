@@ -26,6 +26,7 @@ jobs:
         enabled: true
     steps:
       - checkout
+      - run: npm run dist
       - deploy:
           command: scp -oStrictHostKeyChecking=no -r dist/* circleci@sleepy.fish:/var/www/sleepy.fish
 workflows:
