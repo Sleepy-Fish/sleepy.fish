@@ -28,7 +28,7 @@ jobs:
       - attach_workspace:
           at: ~/project/dist/test
       - run: pwd
-      - run: ls .
+      - run: ls ./dist
       - run: ./dist/test/test.sh
   deploy:
     machine:
