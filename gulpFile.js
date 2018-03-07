@@ -7,6 +7,7 @@ var rename = require('gulp-rename');
 var clean = require('gulp-clean');
 var minifyJS = require('gulp-minify');
 var minifyCSS = require('gulp-clean-css');
+var purge = require('gulp-purgecss')
 var sass = require('gulp-sass');
 var merge = require('merge-stream');
 var lint = require('gulp-eslint');
@@ -122,6 +123,9 @@ gulp.task('minify', function(){
         .pipe(minifyJS({ext:{src:'-debug.js',min:'.js'}}))
         .pipe(gulp.dest('dist/js'))
     gulp.src('dist/css/*.css')
+        .pipe(purgecss({
+            content: ["dist/**/*.html"]
+        }))
         .pipe(minifyCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('dist/css'));
 });
