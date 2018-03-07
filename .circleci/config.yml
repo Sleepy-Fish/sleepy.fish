@@ -25,9 +25,6 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:7.10
-    branches:
-      only:
-        - master
     steps:
       - deploy:
           command: if [ "${CIRCLE_BRANCH}" == "master" ]; then scp -oStrictHostKeyChecking=no -r dist/* circleci@sleepy.fish:/var/www/sleepy.fish; fi
@@ -40,6 +37,10 @@ workflows:
           requires:
             - build
       - deploy:
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - test
 
