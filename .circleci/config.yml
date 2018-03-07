@@ -19,7 +19,7 @@ jobs:
       - run: ls dist/build
       - run: ls dist/test
       - persist_to_workspace:
-           root: ~/
+           root: .
            paths:
             - dist/build/
             - dist/test/
