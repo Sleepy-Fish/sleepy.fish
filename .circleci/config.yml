@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:7.10
-    working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
@@ -17,14 +16,14 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run dist
   test:
-    docker:
-      - image: circleci/node:7.10
+    machine:
+        enabled: true
     steps:
       - checkout
       - run: npm test
   deploy:
-    docker:
-      - image: circleci/node:7.10
+    machine:
+        enabled: true
     steps:
       - checkout
       - deploy:
