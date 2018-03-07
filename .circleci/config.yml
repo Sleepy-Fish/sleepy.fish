@@ -19,23 +19,24 @@ jobs:
       - persist_to_workspace:
            root: ~/project/dist
            paths:
-            - .
+            - build/
+            - test/
   test:
     machine:
         enabled: true
     steps:
       - attach_workspace:
-          at: ~/project/dist
+          at: ~/project/dist/test
       - run: pwd
-      #- run: npm test
+      - run: ls .
+      - run: ./test.th
   deploy:
     machine:
         enabled: true
     steps:
       - attach_workspace:
-          at: ~/project/dist
+          at: ~/project/dist/build
       - deploy:
-          run: pwd
           command: scp -oStrictHostKeyChecking=no -r ./* circleci@sleepy.fish:/var/www/sleepy.fish
 workflows:
   version: 2
