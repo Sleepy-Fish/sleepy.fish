@@ -25,7 +25,7 @@ jobs:
         enabled: true
     steps:
       - attach_workspace:
-        at: /dist
+          at: /dist
       - run: pwd
       - run: npm test
   deploy:
