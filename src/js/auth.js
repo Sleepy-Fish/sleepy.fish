@@ -1,4 +1,3 @@
-var Auth0Lock = require('auth0-lock').Auth0Lock;
 var lock = new Auth0Lock(
     "p-_kg8hvQrhE1PoD8sr3SUUoI5qWsnYM",
     "sleepyfish.auth0.com",
