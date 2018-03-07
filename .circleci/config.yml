@@ -29,7 +29,7 @@ jobs:
           at: ~/project/dist/test
       - run: pwd
       - run: ls .
-      - run: ./test.sh
+      - run: ./dist/test/test.sh
   deploy:
     machine:
         enabled: true
@@ -37,7 +37,7 @@ jobs:
       - attach_workspace:
           at: ~/project/dist/build
       - deploy:
-          command: scp -oStrictHostKeyChecking=no -r ./* circleci@sleepy.fish:/var/www/sleepy.fish
+          command: scp -oStrictHostKeyChecking=no -r ./dist/build/* circleci@sleepy.fish:/var/www/sleepy.fish
 workflows:
   version: 2
   launch:
