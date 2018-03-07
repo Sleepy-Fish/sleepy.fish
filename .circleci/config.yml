@@ -28,7 +28,7 @@ jobs:
         enabled: true
     steps:
       - attach_workspace:
-          at: dist/test
+          at: .
       - run: pwd
       - run: ls ./dist/test
       - run: ./dist/test/test.sh
@@ -37,7 +37,7 @@ jobs:
         enabled: true
     steps:
       - attach_workspace:
-          at: dist/build
+          at: .
       - deploy:
           command: scp -oStrictHostKeyChecking=no -r ./dist/build/* circleci@sleepy.fish:/var/www/sleepy.fish
 workflows:
