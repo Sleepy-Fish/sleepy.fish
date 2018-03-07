@@ -19,13 +19,13 @@ jobs:
       - persist_to_workspace:
            root: ~/project
            paths:
-             - /dist
+            - /dist
   test:
     machine:
         enabled: true
     steps:
-       - attach_workspace:
-          at: /dist
+      - attach_workspace:
+        at: /dist
       - run: pwd
       - run: npm test
   deploy:
