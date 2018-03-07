@@ -16,9 +16,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run dist
       - persist_to_workspace:
-          root: /
+          root: /dist
           paths:
-            - /dist
+            - /*
   test:
     machine:
         enabled: true
@@ -30,7 +30,7 @@ jobs:
     machine:
         enabled: true
     steps:
-       - attach_workspace:
+      - attach_workspace:
           at: /dist
       - deploy:
           command: scp -oStrictHostKeyChecking=no -r /* circleci@sleepy.fish:/var/www/sleepy.fish
