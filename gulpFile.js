@@ -104,8 +104,8 @@ gulp.task('vendor-fonts', function () {
     return gulp.src(config.paths.vendor.fonts)
         .pipe(gulp.dest(config.paths.dist.build + '/fonts'));
 });
-gulp.task('vendor', function () {
-    sequence('vendor-override', ['vendor-js', 'vendor-css', 'vendor-fonts'])
+gulp.task('vendor', function (cb) {
+    sequence('vendor-override', ['vendor-js', 'vendor-css', 'vendor-fonts'], cb);
 });
 
 gulp.task('clean', function () {
@@ -120,32 +120,30 @@ gulp.task('watch', function () {
 });
 
 gulp.task('minify', function () {
-    gulp.src(config.paths.dist.build + '/js/*.js')
-        .pipe(minifyJS({ ext: { src: '-debug.js', min: '.js' } }))
-        .pipe(gulp.dest(config.paths.dist.build + '/js'))
-    gulp.src(config.paths.dist.build + '/css/*.css')
-        .pipe(purge({
-            content: [config.paths.dist.build + '/**/*.html']
-        }))
-        .pipe(minifyCSS({ compatibility: 'ie8' }))
-        .pipe(gulp.dest(config.paths.dist.build + '/css'));
-});
-
-gulp.task('a', function () {
-    gulp.src(config.paths.dist.build + '/index.html')
-        .pipe(
-            inject(gulp.src(config.paths.dist.build + '/css/*.css')
-                .pipe(concat('injected.css'))
-                .pipe(purge({
-                    content: [config.paths.dist.build + '/index.html']
-                }))
-                .pipe(minifyCSS({ compatibility: 'ie8' })), {
-                    transform: function (filepath, file) {
-                        return '<style>' + file.contents.toString() + '</style>';
-                    },
-                    starttag: '<!-- inject:style:css -->'
-                }))
-        .pipe(gulp.dest(config.paths.dist.build))
+    var minifications = []
+    minifications.push(
+        gulp.src(config.paths.dist.build + '/js/*.js')
+            .pipe(minifyJS({ ext: { src: '-debug.js', min: '.js' } }))
+            .pipe(gulp.dest(config.paths.dist.build + '/js'))
+    );
+    minifications.push(
+        gulp.src(config.paths.dist.build + '/index.html')
+            .pipe(
+                inject(gulp.src(config.paths.dist.build + '/css/*.css')
+                    .pipe(concat('injected.css'))
+                    .pipe(purge({
+                        content: [config.paths.dist.build + '/index.html']
+                    }))
+                    .pipe(minifyCSS({ compatibility: 'ie8' })), {
+                        transform: function (filepath, file) {
+                            return '<style>' + file.contents.toString() + '</style>';
+                        },
+                        starttag: '<!-- inject:style:css -->',
+                        removeTags: true
+                    }))
+            .pipe(gulp.dest(config.paths.dist.build))
+    );
+    return merge(...minifications);
 });
 
 gulp.task('test', function () {
@@ -153,14 +151,14 @@ gulp.task('test', function () {
         .pipe(gulp.dest(config.paths.dist.test))
 });
 
-gulp.task('build', function () {
-    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint', 'test'], 'minify');
+gulp.task('build', function (cb) {
+    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint', 'test'], 'minify', cb);
 });
 
-gulp.task('dev-build', function () {
-    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint']);
+gulp.task('dev-build', function (cb) {
+    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint'], cb);
 });
 
-gulp.task('default', function () {
-    sequence('dev-build', ['open', 'watch'])
+gulp.task('default', function (cb) {
+    sequence('dev-build', ['open', 'watch'], cb)
 });
