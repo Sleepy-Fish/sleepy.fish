@@ -12,15 +12,21 @@ var lock = new Auth0Lock(
 );
 
 Sleepy.loadApp = function(){
-    Sleepy.app = new Vue({
-        el: '#app',
-        data: {}
-    });
     $('#index-banner').hide();
     $('#loading-banner').hide();
     $('.login-nav').hide();
     $('.logout-nav').show();
-    $('#app').show();
+    $('#PageContent').append("".concat(
+        '<div id="app">',
+            '<p>&nbsp;&nbsp;&nbsp;Welcome, {{ user.given_name }}!</p>',
+        '</div>',
+    ));
+    Sleepy.app = new Vue({
+        el: '#app',
+        data: {
+            user: Sleepy.user
+        }
+    });
 }
 
 Sleepy.loadStatic = function(){
@@ -28,7 +34,7 @@ Sleepy.loadStatic = function(){
     $('#loading-banner').hide();
     $('.login-nav').show();
     $('.logout-nav').hide();
-    $('#app').hide();
+    $('#app').remove();
 }
 
 Sleepy.validate = function(cb){
@@ -61,6 +67,7 @@ lock.on("authenticated", function(authResult) {
       } else {
         Sleepy.user = profile;
         Sleepy.loggedin = true;
+        Sleepy.loadApp();
       }
     });
   });

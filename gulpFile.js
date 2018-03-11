@@ -136,7 +136,13 @@ gulp.task('minify', function () {
                     }))
                     .pipe(minifyCSS({ compatibility: 'ie8' })), {
                         transform: function (filepath, file) {
-                            return '<style>' + file.contents.toString() + '</style>';
+                            return "".concat(
+                            '<style>',
+                                file.contents.toString(),
+                            '</style>',
+                            '<link async href="./css/vendor.css">',
+                            '<link async href="./css/bundle.css">'
+                        );
                         },
                         starttag: '<!-- inject:style:css -->',
                         removeTags: true
