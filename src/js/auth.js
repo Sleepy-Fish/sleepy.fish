@@ -11,21 +11,47 @@ var lock = new Auth0Lock(
     }
 );
 
-let currentCookie = Cookies.get('sleepy-auth')
-if(currentCookie){
-    lock.getUserInfo(currentCookie, function(error, profile) {
-        if (error) {
-            Cookies.expire('sleepy-auth');
-            Sleepy.loggedin = false;
-            console.warn('Auth Cookie Not Valid');
-        } else {
-            Sleepy.user = profile;
-            Sleepy.loggedin = true;
-        }
+Sleepy.loadApp = function(){
+    Sleepy.app = new Vue({
+        el: '#app',
+        data: {}
     });
-} else{
-    Sleepy.loggedin = false;
+    $('#index-banner').hide();
+    $('#loading-banner').hide();
+    $('.login-nav').hide();
+    $('.logout-nav').show();
+    $('#app').show();
 }
+
+Sleepy.loadStatic = function(){
+    $('#index-banner').show();
+    $('#loading-banner').hide();
+    $('.login-nav').show();
+    $('.logout-nav').hide();
+    $('#app').hide();
+}
+
+Sleepy.validate = function(cb){
+    let currentCookie = Cookies.get('sleepy-auth');
+    if(currentCookie){
+        lock.getUserInfo(currentCookie, function(error, profile) {
+            if (error) {
+                Cookies.expire('sleepy-auth');
+                Sleepy.loggedin = false;
+                cb(false);
+                console.warn('Auth Cookie Not Valid');
+            } else {
+                Sleepy.user = profile;
+                Sleepy.loggedin = true;
+                cb(true);
+            }
+        });
+    } else{
+        Sleepy.loggedin = false;
+        cb(false)
+    }
+}
+
 
 lock.on("authenticated", function(authResult) {
     Cookies.set('sleepy-auth', authResult.accessToken, {expires: authResult.expiresIn})
@@ -42,3 +68,18 @@ lock.on("authenticated", function(authResult) {
 Sleepy.login = function(){
     lock.show();
 }
+
+Sleepy.logout = function(){
+    delete Sleepy.user;
+    Sleepy.loggedin = false;
+    Cookies.expire('sleepy-auth');
+    Sleepy.loadStatic();
+}
+
+Sleepy.validate(function(loggedIn){
+    if(loggedIn){
+        Sleepy.loadApp();
+    } else {
+        Sleepy.loadStatic();
+    }
+});
