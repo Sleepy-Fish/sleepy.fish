@@ -11,16 +11,34 @@ var lock = new Auth0Lock(
     }
 );
 
+let currentCookie = Cookies.get('sleepy-auth')
+if(currentCookie){
+    lock.getUserInfo(currentCookie, function(error, profile) {
+        if (error) {
+            Cookies.expire('sleepy-auth');
+            Sleepy.loggedin = false;
+            console.warn('Auth Cookie Not Valid');
+        } else {
+            Sleepy.user = profile;
+            Sleepy.loggedin = true;
+        }
+    });
+} else{
+    Sleepy.loggedin = false;
+}
+
 lock.on("authenticated", function(authResult) {
+    Cookies.set('sleepy-auth', authResult.accessToken, {expires: authResult.expiresIn})
     lock.getUserInfo(authResult.accessToken, function(error, profile) {
       if (error) {
         throw Error(error);
+      } else {
+        Sleepy.user = profile;
+        Sleepy.loggedin = true;
       }
-      console.log(authResult.accessToken)
-      console.log(profile);
     });
   });
 
-global.login = function(){
+Sleepy.login = function(){
     lock.show();
 }

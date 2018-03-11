@@ -17,7 +17,8 @@ module.exports = {
         vendor: {
             js: [
                 './node_modules/jquery/dist/jquery.min.js',
-                './node_modules/materialize-css/dist/js/materialize.js'
+                './node_modules/materialize-css/dist/js/materialize.js',
+                './node_modules/cookies-js/dist/cookies.min.js'
             ],
             css: [
                 './node_modules/font-awesome/css/font-awesome.min.css'
