@@ -14,25 +14,19 @@
   </head>
   <body class="yellow lighten-4 blue-text text-darken-3">
 
+  <header id="PageHeader" class="page-header">
     {% include "njk/header.njk" %}
+  </header>
 
-    <main>
-      <div class="section no-pad-bot" id="index-banner">
-        <div class="container">
-          <br><br>
-          <h1 class="header center">Sleepy Fish</h1>
-          <div class="row center">
-            <h5 class="header col s12 light">A productless brand for web tech and games</h5>
-          </div>
-          <div class="row center">
-            <a onclick="login()" id="login-button" class="btn-large waves-effect waves-light">Login</a>
-          </div>
-          <br><br>
-        </div>
-      </div>
-    </main>
+  <main id="PageContent" class="page-content">
+    {% include "njk/splash.njk" %}
+    {% include "njk/loader.njk" %}
+  </main>
 
+  <footer id="PageFooter" class="page-footer">
     {% include "njk/footer.njk" %}
+  </footer>
+
   </body>
   <!-- JavaScript -->
   <script src="./js/vendor.js"></script>
