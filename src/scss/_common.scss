@@ -12,10 +12,19 @@ main {
     display:none;
 }
 
-.nav-wrapper{
-    li{
-        text-align: center;
-        min-width:70px;
+header{
+    .splash-banner{
+        height: 20vh;
+        img {
+            max-height: 16vh;
+            margin-top: 2vh;
+        }
+    }
+    .nav-wrapper{
+        li{
+            text-align: center;
+            min-width:70px;
+        }
     }
 }
 
