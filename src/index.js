@@ -1,8 +1,12 @@
 
 global.Sleepy = {}
 Sleepy.lock = require('./js/auth');
+Vue.use(VueRouter);
 Sleepy.app = new Vue({
     el: '#app',
+    router: new VueRouter({
+        routes: require('./js/routes')
+    }),
     data:{
         loggedIn: false,
         loading: true,
