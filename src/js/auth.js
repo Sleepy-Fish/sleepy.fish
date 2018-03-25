@@ -16,17 +16,8 @@ Sleepy.loadApp = function(){
     $('#loading-banner').hide();
     $('.login-nav').hide();
     $('.logout-nav').show();
-    $('#PageContent').append("".concat(
-        '<div id="app">',
-            '<p>&nbsp;&nbsp;&nbsp;Welcome, {{ user.given_name }}!</p>',
-        '</div>',
-    ));
-    Sleepy.app = new Vue({
-        el: '#app',
-        data: {
-            user: Sleepy.user
-        }
-    });
+    $('#app').remove();
+    $('#PageContent').append('<p id="app">&nbsp;&nbsp;&nbsp;Welcome, '+Sleepy.user.given_name+'!</p>');
 }
 
 Sleepy.loadStatic = function(){

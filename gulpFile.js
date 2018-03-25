@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var nunjucks = require('gulp-nunjucks');
 var connect = require('gulp-connect');
 var open = require('gulp-open');
 var concat = require('gulp-concat');
@@ -41,10 +40,8 @@ gulp.task('lint', function () {
         .pipe(lint.format());
 })
 
-gulp.task('njk', function () {
-    return gulp.src(config.paths.index.njk)
-        .pipe(nunjucks.compile({ page_title: 'Sleepy Fish' }))
-        .pipe(rename({ extname: '.html' }))
+gulp.task('html', function () {
+    return gulp.src(config.paths.index.html)
         .pipe(gulp.dest(config.paths.dist.build))
         .pipe(connect.reload());
 });
@@ -113,7 +110,7 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 gulp.task('watch', function () {
-    gulp.watch(config.paths.glob.njk, ['njk']);
+    gulp.watch(config.paths.glob.html, ['html']);
     gulp.watch([config.paths.index.js, config.paths.glob.js], ['js', 'lint']);
     gulp.watch([config.paths.index.scss, config.paths.glob.scss], ['scss']);
     gulp.watch(config.paths.vendor.override + '*', ['vendor']);
@@ -158,11 +155,11 @@ gulp.task('test', function () {
 });
 
 gulp.task('build', function (cb) {
-    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint', 'test'], 'minify', cb);
+    sequence('clean', ['html', 'js', 'scss', 'vendor', 'img', 'lint', 'test'], 'minify', cb);
 });
 
 gulp.task('dev-build', function (cb) {
-    sequence('clean', ['njk', 'js', 'scss', 'vendor', 'img', 'lint'], cb);
+    sequence('clean', ['html', 'js', 'scss', 'vendor', 'img', 'lint'], cb);
 });
 
 gulp.task('default', function (cb) {
