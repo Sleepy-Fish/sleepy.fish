@@ -16,7 +16,7 @@ var source = require('vinyl-source-stream');
 var sequence = require('run-sequence');
 var inject = require('gulp-inject');
 
-var config = require('./gulpConfig');
+var config = require('./gulp.config');
 var baseurl = config.protocol + '://' + config.domain;
 
 gulp.task('connect', function () {
