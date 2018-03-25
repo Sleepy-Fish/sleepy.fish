@@ -12,6 +12,8 @@
 
     },
     "globals": {
-        "Auth0Lock": false
+        "Sleepy": false,
+        "Auth0Lock":false,
+        "Cookies":false
     }
 }
