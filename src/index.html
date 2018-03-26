@@ -14,73 +14,70 @@
   </head>
   <body class="yellow lighten-4 blue-text text-darken-3">
 
-<!-- HEADER -->
-  <header id="PageHeader" class="page-header">
-    <div class="blue lighten-4" style="height:20vh;">
-      <img  style="max-height:16vh; margin-top:2vh;" src="img/herring-fish.svg"/>
-    </div>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">&nbsp;&nbsp;Sleepy Fish</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/tech">Tech</a></li>
-          <li><a href="/games">Games</a></li>
-          <li class="login-nav" style="display:none;"><a href="#" onclick="Sleepy.login()">Login</a></li>
-          <li class="logout-nav" style="display:none;"><a href="#" onclick="Sleepy.logout()">Logout</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+    <!-- App -->
+    <div id="app">
 
-<!-- CONTENT -->
-  <main id="PageContent" class="page-content">
-    <!-- Splash -->
-    <div class="section no-pad-bot" id="index-banner" class="static-banner" style="display:none;">
-      <div class="container">
-        <br><br>
-        <h1 class="header center">Sleepy Fish</h1>
-        <div class="row center">
-        <h5 class="header col s12 light">A productless brand for web tech and games</h5>
+      <!-- Header -->
+      <header id="PageHeader" class="page-header">
+        <div class="blue lighten-4 splash-banner">
+          <img src="img/herring-fish.svg"/>
         </div>
-        <div class="row center">
-        <a onclick="Sleepy.login()" id="login-button" class="btn-large waves-effect waves-light">Login</a>
-        </div>
-        <br><br>
-      </div>
-    </div>
-    <!-- Loader -->
-    <div class="section no-pad-bot" id="loading-banner" class="static-banner" style="text-align:center;padding:150px; 10px;">
-      <img width="100" src="img/water.svg"/>
-      <p>&nbsp;&nbsp;&nbsp;Loading...<p>
-    </div>
-  </main>
+        <nav>
+          <div class="nav-wrapper">
+            <router-link class="brand-logo" to="/">&nbsp;&nbsp;Sleepy Fish</router-link>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><router-link to="/tech">Tech</router-link></li>
+              <li><router-link to="/games">Games</router-link></li>
+              <li class="loading-nav" v-if="loading">. . .</li>
+              <li v-cloak class="logout-nav" v-if="loggedIn && !loading"><a @click="logout">Logout</a></li>
+              <li v-cloak class="login-nav" v-else-if="!loading"><a @click="login">Login</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
 
-<!-- FOOTER -->
-  <footer id="PageFooter" class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Hello World</h5>
-          <p class="grey-text text-lighten-4">poodle dee doodle man.</p>
+      <!-- Content -->
+      <main id="PageContent" class="page-content">
+        <div class="section no-pad-bot center-align">
+        
+          <!-- Loading Bar -->
+          <div v-if="loading">
+            <div class="spacer-150"></div>
+            <img width="100" src="img/water.svg"/>
+            <p>&nbsp;&nbsp;&nbsp;Loading...<p>
+          </div>
+
+          <!-- Router -->
+          <router-view></router-view>
+
         </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Links</h5>
-          <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-          </ul>
+      </main>
+
+      <!-- Footer -->
+      <footer id="PageFooter" class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text">Sleepy Fish</h5>
+              <p class="red-text text-lighten-1">(Site Under Construction)</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text">Links</h5>
+              <ul>
+                <li><a class="grey-text text-lighten-3" href="https://github.com/Sleepy-Fish">Github</a></li>
+                <li><a class="grey-text text-lighten-3" href="#!">Mastodon</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="footer-copyright">
+          <div class="container">
+            © 2018 Sleepy Fish
+          </div>
+        </div>
+      </footer>
+
     </div>
-    <div class="footer-copyright">
-      <div class="container">
-        © 2018 Sleepy Fish
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-      </div>
-    </div>
-  </footer>
 
   </body>
   <!-- JavaScript -->

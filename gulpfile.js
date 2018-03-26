@@ -11,12 +11,12 @@ var sass = require('gulp-sass');
 var merge = require('merge-stream');
 var lint = require('gulp-eslint');
 var browserify = require('browserify');
-var babelify = require('babelify');
+var vueify = require('vueify');
 var source = require('vinyl-source-stream');
 var sequence = require('run-sequence');
 var inject = require('gulp-inject');
 
-var config = require('./gulpConfig');
+var config = require('./gulp.config');
 var baseurl = config.protocol + '://' + config.domain;
 
 gulp.task('connect', function () {
@@ -48,7 +48,7 @@ gulp.task('html', function () {
 
 gulp.task('js', function () {
     return browserify(config.paths.index.js)
-        .transform(babelify)
+        .transform(vueify)
         .bundle()
         .on('error', console.error.bind(console))
         .pipe(source('bundle.js'))
