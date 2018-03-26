@@ -20,6 +20,7 @@ Sleepy.app = new Vue({
             this.user = {};
             this.loggedIn = false;
             Cookies.expire('sleepy-auth');
+            this.$router.push('/');
         },
         validate:function(cb){
             var authCookie = Cookies.get('sleepy-auth');

@@ -1,20 +1,18 @@
+var Splash = require('../components/splash.vue');
+var Tech = require('../components/tech.vue');
+var Games = require('../components/games.vue');
+
 module.exports = [
     {
         path: '/',
-        component:{
-            template: '<div>home</div>'
-        }
+        component: Splash
     },
     {
         path: '/tech',
-        component:{
-            template: '<div>tech</div>'
-        }
+        component: Tech
     },
     {
         path: '/games',
-        component:{
-            template: '<div>games</div>'
-        }
+        component: Games
     }
 ]

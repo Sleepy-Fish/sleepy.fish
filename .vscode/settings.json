@@ -2,7 +2,7 @@
     "files.exclude": {
         "node_modules": true,
         "eslint.config.json": true,
-        "dist": true,
+        //"dist": true,
         ".circleci": true,
         ".gitignore": true,
         "package-lock.json": true,
