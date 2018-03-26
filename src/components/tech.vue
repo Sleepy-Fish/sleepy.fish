@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <p>tech</p>
+    <p v-cloak v-if="!sleepy.loading">tech</p>
 </template>
 
 <script>

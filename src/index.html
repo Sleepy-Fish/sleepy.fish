@@ -39,6 +39,7 @@
       <!-- Content -->
       <main id="PageContent" class="page-content">
         <div class="section no-pad-bot center-align">
+        
           <!-- Loading Bar -->
           <div v-if="loading">
             <div class="spacer-150"></div>
@@ -46,7 +47,9 @@
             <p>&nbsp;&nbsp;&nbsp;Loading...<p>
           </div>
 
+          <!-- Router -->
           <router-view></router-view>
+
         </div>
       </main>
 
