@@ -137,8 +137,8 @@ gulp.task('minify', function () {
                             '<style>',
                                 file.contents.toString(),
                             '</style>',
-                            '<link async href="./css/vendor.css">',
-                            '<link async href="./css/bundle.css">'
+                            '<link rel="stylesheet" href="./css/vendor.css" media="none" onload="if(media!=\'all\')media=\'all\'">',
+                            '<link rel="stylesheet" async href="./css/bundle.css" media="none" onload="if(media!=\'all\')media=\'all\'">'
                         );
                         },
                         starttag: '<!-- inject:style:css -->',
