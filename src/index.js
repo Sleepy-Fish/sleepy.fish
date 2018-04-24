@@ -1,5 +1,6 @@
 
 global.Sleepy = {}
+require('./js/konami')(function(){alert('konami code')});
 Sleepy.lock = require('./js/auth');
 Vue.use(VueRouter);
 Sleepy.app = new Vue({

@@ -14,6 +14,7 @@
     "globals": {
         "Sleepy": false,
         "Auth0Lock":false,
-        "Cookies":false
+        "Cookies":false,
+        "k":false
     }
 }
