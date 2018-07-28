@@ -110,8 +110,8 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 gulp.task('watch', function () {
-    gulp.watch(config.paths.glob.html, ['html']);
-    gulp.watch([config.paths.index.js, config.paths.glob.js], ['js', 'lint']);
+    gulp.watch(config.paths.index.html, ['html']);
+    gulp.watch([config.paths.index.js, config.paths.glob.js, config.paths.glob.vue], ['js', 'lint']);
     gulp.watch([config.paths.index.scss, config.paths.glob.scss], ['scss']);
     gulp.watch(config.paths.vendor.override + '*', ['vendor']);
 });

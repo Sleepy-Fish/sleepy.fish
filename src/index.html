@@ -10,6 +10,7 @@
     <!-- inject:style:css -->
     <link href="./css/vendor.css" rel="stylesheet">
     <link href="./css/bundle.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- endinject -->
   </head>
   <body class="yellow lighten-4 blue-text text-darken-3">
@@ -22,15 +23,25 @@
         <div class="blue lighten-4 splash-banner">
           <img src="img/herring-fish.svg"/>
         </div>
+        <ul id="dropdown" class="dropdown-content hide-on-med-and-up">
+          <li><router-link to="/tech">Tech</router-link></li>
+          <li><router-link to="/games">Games</router-link></li>
+          <li class="divider"></li>
+          <li v-cloak class="logout-nav" v-if="loggedIn && !loading"><a @click="logout">Logout</a></li>
+          <li v-cloak class="login-nav" v-else-if="!loading"><a @click="login">Login</a></li>
+        </ul>
         <nav>
           <div class="nav-wrapper">
-            <router-link class="brand-logo" to="/">&nbsp;&nbsp;Sleepy Fish</router-link>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <router-link class="brand-logo left" to="/">&nbsp;&nbsp;Sleepy Fish</router-link>
+            <ul id="nav-mobile" class="right hide-on-small-only">
               <li><router-link to="/tech">Tech</router-link></li>
               <li><router-link to="/games">Games</router-link></li>
               <li class="loading-nav" v-if="loading">. . .</li>
               <li v-cloak class="logout-nav" v-if="loggedIn && !loading"><a @click="logout">Logout</a></li>
               <li v-cloak class="login-nav" v-else-if="!loading"><a @click="login">Login</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-up">
+              <li v-cloak><a class="dropdown-trigger" data-target="dropdown"><i class="material-icons">menu</i></a></li>
             </ul>
           </div>
         </nav>
@@ -84,4 +95,9 @@
   <script src="./js/vendor.js"></script>
   <script src="https://cdn.auth0.com/js/lock/11.3.1/lock.min.js"></script>
   <script src="./js/bundle.js"></script>
+  <script>
+    $('document').ready(function(){
+      $(".dropdown-trigger").dropdown();
+    });
+  </script>
 </html>

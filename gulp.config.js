@@ -10,14 +10,14 @@ module.exports = {
             scss: './src/index.scss',
         },
         glob: {
-            html: './src/**/*.html',
+            vue: './src/**/*.vue',
             js: './src/js/**/*.js',
             scss: './src/scss/**/*.scss'
         },
         vendor: {
             js: [
                 './node_modules/jquery/dist/jquery.min.js',
-                './node_modules/materialize-css/dist/js/.min.js',
+                './node_modules/materialize-css/dist/js/materialize.min.js',
                 './node_modules/cookies-js/dist/cookies.min.js',
                 './node_modules/vue/dist/vue.min.js',
                 './node_modules/vue-router/dist/vue-router.min.js'
