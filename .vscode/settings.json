@@ -4,7 +4,7 @@
         "eslint.config.json": true,
         //"dist": true,
         ".circleci": true,
-        ".gitignore": true,
+        //".gitignore": true,
         "package-lock.json": true,
         "favicon.ico": true,
         "test":true,
