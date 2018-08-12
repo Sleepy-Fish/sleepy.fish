@@ -35,6 +35,13 @@ export default {
                   url:"https://blips.sleepy.fish",
                   description:"Blips is a simple conquest game about colonizing and managing mindless blips. Spread your blips to the furthest reaches of beyond!",
               },
+              {
+                  name:"Mage Wars",
+                  img:"img/mages.png",
+                  git:"https://github.com/Sleepy-Fish/mage-wars",
+                  url:"https://mages.sleepy.fish",
+                  description:"A top down online PvP combat arena game! Fire spells at your enemies while dodging theirs in bullet hell type combat. Join your friends in competetive combat arena (Multiplayer and magic coming soon)",
+              },
           ]
       }
   }
