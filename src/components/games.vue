@@ -1,12 +1,23 @@
 <style scoped>
-
+    .card-image{
+        white-space:nowrap;
+    }
+    .card-image img{
+        height:300px;
+        display:inline;
+        vertical-align:top;
+        float:none;
+    }
+    .card-content{
+        height:140px;
+    }
 </style>
 
 <template>
     <div v-cloak v-if="!sleepy.loading">
         <div class="row">
             <div class="col s12 m6 l3" v-for="(game, index) in games" :key="index">
-                <div class="card blue lighten-4">
+                <div class="card blue lighten-4" >
                     <div class="card-image">
                         <img :src="game.img">
                         <a :href="game.git" class="blue-text text-darken-2 right" style="position:absolute;top:10px;right:10px;"><i class="material-icons">code</i></a>
