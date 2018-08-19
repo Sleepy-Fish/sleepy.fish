@@ -53,6 +53,13 @@ export default {
                   url:"https://mages.sleepy.fish",
                   description:"A top down online PvP combat arena game! Fire spells at your enemies while dodging theirs in bullet hell type combat. Join your friends in competetive combat arena (Multiplayer and magic coming soon)",
               },
+              {
+                  name:"Bonsai",
+                  img:"img/tree.png",
+                  git:"https://github.com/Sleepy-Fish/bonsai",
+                  url:"https://bonsai.sleepy.fish",
+                  description:"An enthralling experience of watching trees grow.",
+              },
           ]
       }
   }
