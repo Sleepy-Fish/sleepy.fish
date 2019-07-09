@@ -5,7 +5,7 @@ module.exports = {
     entry: 'dist/build/index.html',
     paths: {
         index: {
-            html: './src/index.html',
+            html: './src/*.html',
             js: './src/index.js',
             scss: './src/index.scss',
         },
