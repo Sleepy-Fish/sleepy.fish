@@ -4,10 +4,9 @@
   </div>
 </template>
 
-<style lang="stylus" scoped>
-
-.container
-  font-family Courier, sans-serif
-  max-width 1200px
-
+<style>
+.container {
+  font-family: Courier, sans-serif;
+  max-width: 1200px;
+}
 </style>
