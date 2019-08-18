@@ -1,13 +1,5 @@
 {
     "files.exclude": {
-        //"node_modules": true,
-        "eslint.config.json": true,
-        //"dist": true,
-        ".circleci": true,
-        //".gitignore": true,
-        "package-lock.json": true,
-        "favicon.ico": true,
-        "test":true,
-        ".vscode":true
+        ".vscode": true
     }
 }

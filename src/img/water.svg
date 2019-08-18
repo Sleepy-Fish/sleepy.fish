@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-liquid">
-	<circle cx="50" cy="50" fill="none" r="40" stroke="#1765C4" stroke-width="5">
-	</circle>
-	<path d="M 15 50 Q 32.5 41.2604 50 50 Q 67.5 58.7396 85 50 A 35 35 0 0 1 15 50" fill="#BBDEFB">
-		<animate attributeName="d" calcMode="spline" values="M15 50 Q32.5 40 50 50 Q67.5 60 85 50 A35 35 0 0 1 15 50;M15 50 Q32.5 60 50 50 Q67.5 40 85 50 A35 35 0 0 1 15 50;M15 50 Q32.5 40 50 50 Q67.5 60 85 50 A35 35 0 0 1 15 50" keyTimes="0;0.5;1" dur="1" keySplines="0.5 0 0.5 1;0.5 0 0.5 1" begin="0s" repeatCount="indefinite">
-		</animate>
-	</path>
-</svg>
