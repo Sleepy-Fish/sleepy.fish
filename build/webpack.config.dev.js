@@ -26,9 +26,25 @@ module.exports = merge(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css?$/,
         use: [
+          'vue-style-loader',
           'css-loader'
+        ]
+      }, {
+        test: /\.s[c|a]ss?$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              data: `
+                @import "node_modules/mustard-ui/src/scss/vars/colors.scss";
+                @import "node_modules/mustard-ui/src/scss/vars/breakpoints.scss";
+              `
+            }
+          }
         ]
       }
     ]

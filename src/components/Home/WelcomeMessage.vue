@@ -14,3 +14,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  h3 {
+    font-family: Courier, monospace;
+    color: red;
+  }
+</style>
