@@ -19,6 +19,7 @@ jobs:
            root: .
            paths:
             - dist/
+            - src/
   deploy:
     machine:
         enabled: true
