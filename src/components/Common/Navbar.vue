@@ -86,7 +86,7 @@ export default {
 
 <style lang="scss" scoped>
 $nav-bg-color: black;
-$nav-link-color: #dcdcdc;
+$nav-link-color: #dedede;
 $nav-link-active-color: white;
 nav {
   background-color: $nav-bg-color;
