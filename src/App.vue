@@ -1,9 +1,7 @@
 <template>
   <div class="app-container">
     <NavBar />
-    <div class="container center-content">
-      <RouterView />
-    </div>
+    <RouterView />
   </div>
 </template>
 
@@ -18,6 +16,9 @@ export default {
 </script>
 
 <style>
+  body {
+    background-color: black !important;
+  }
   .app-container {
     font-family: Courier, monospace;
   }

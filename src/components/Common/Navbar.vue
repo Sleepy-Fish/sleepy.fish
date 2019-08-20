@@ -4,7 +4,7 @@
     <div class="nav-container">
       <div class="nav-logo">
         <router-link :to="`/`">
-          Sleepy Fish
+          Sleepy Fish<span class="display-lg-up"> Games</span>
         </router-link>
       </div>
       <ul class="nav-links">
@@ -85,7 +85,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$nav-bg-color: black;
+$nav-bg-color:  rgba(0,0,0,0.4);
 $nav-link-color: #dedede;
 $nav-link-active-color: white;
 nav {
@@ -102,8 +102,12 @@ nav {
 }
 .mobile-menu {
   position: absolute;
+  background-color:rgba(0,0,0,0.4);
   z-index: 99;
   top: 50px;
   right: 5px;
+  li:last-of-type > a {
+    border: none;
+  }
 }
 </style>
