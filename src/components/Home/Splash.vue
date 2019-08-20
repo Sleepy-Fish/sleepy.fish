@@ -20,7 +20,8 @@
   width: 100vw;
   height: 90vh;
   .center-piece {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 5px;
     position: relative;
     top: 30vh;
     padding:30px;
