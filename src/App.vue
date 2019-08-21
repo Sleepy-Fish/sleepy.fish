@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NavBar from 'components/Common/NavBar'
+import NavBar from 'components/NavBar'
 
 export default {
   components: {
@@ -16,13 +16,8 @@ export default {
 </script>
 
 <style>
-  body {
-    background-color: black !important;
-  }
-  .app-container {
-    font-family: Courier, monospace;
-  }
-  .container {
-    max-width: 1200px;
-  }
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 </style>

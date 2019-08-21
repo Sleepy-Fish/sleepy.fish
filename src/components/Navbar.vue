@@ -21,7 +21,10 @@
         </li>
       </ul>
       <a class="mobile-menu-toggle" />
-      <ul class="mobile-menu menu">
+      <ul
+        id="mobile-nav"
+        class="mobile-menu menu"
+      >
         <li
           v-for="route in routes"
           :key="route.text"
@@ -42,6 +45,10 @@ export default {
     return {
       routes: [
         {
+          text: 'About',
+          page: '/about'
+        },
+        {
           text: 'Games',
           page: '/games'
         },
@@ -52,10 +59,6 @@ export default {
         {
           text: 'Extras',
           page: '/extras'
-        },
-        {
-          text: 'About',
-          page: '/about'
         }
       ]
     }
@@ -85,24 +88,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$nav-bg-color:  rgba(0,0,0,0.4);
-$nav-link-color: #dedede;
-$nav-link-active-color: white;
-nav {
-  background-color: $nav-bg-color;
-  a {
-    color: $nav-link-color;
-    &:active {
-      color: $nav-link-active-color;
-    }
-    &.active {
-      border-bottom: 4px solid $nav-link-active-color;
-    }
-  }
-}
-.mobile-menu {
+#mobile-nav.mobile-menu {
   position: absolute;
-  background-color:rgba(0,0,0,0.4);
   z-index: 99;
   top: 50px;
   right: 5px;

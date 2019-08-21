@@ -30,7 +30,16 @@ module.exports = merge(baseConfig, {
         use: [
           MiniCssExtractPlugin.loader, 
           'css-loader',
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              data: `
+                @import "node_modules/mustard-ui/src/scss/vars/colors.scss";
+                @import "node_modules/mustard-ui/src/scss/vars/breakpoints.scss";
+                @import "static/style/overrides.scss";
+              `
+            }
+          }
         ]
       }
     ]

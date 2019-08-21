@@ -1,0 +1,46 @@
+// ==== Base ==== //
+$body-bg-color: $color-black;
+$brand-color: $color-teal-700;
+$transparent-bg: rgba(0,0,0,0.4);
+$transparent-bg-lite: rgba(35, 35, 35, 0.4);
+
+// ==== Typography ==== //
+$font-color: $color-gray-400;
+$heading-font-color: $color-gray-400;
+$font-family: Courier, monospace;
+$heading-font-family: Courier, monospace;
+
+// ==== NavBar ==== //
+$nav-bg-color:  $transparent-bg;
+$nav-link-color: $color-gray-300;
+$nav-menu-toggle-color: $color-gray-300;
+
+// ==== Dropdown Menu ==== //
+$menu-shadow: false;
+$menu-bg-color: $transparent-bg;
+$menu-hover-color: $transparent-bg-lite;
+
+// ==== Cards ==== //
+$card-shadow: false;
+$card-bg-color: $color-gray-900;
+
+// ==== Panels ==== //
+$panel-shadow: false;
+$panel-bg-color: $transparent-bg;
+$panel-head-color: $transparent-bg-lite;
+$panel-footer-color: $transparent-bg-lite;
+
+// ==== Random ==== //
+small {
+  color: $color-gray-600;
+}
+.warning-text {
+  color: $color-red-900;
+  font-size:24px;
+}
+button {
+  font-family: $font-family;
+}
+.panel-title {
+  margin-bottom: 0;
+}

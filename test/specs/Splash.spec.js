@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Splash from '@/components/Home/Splash'
+import Splash from '@/components/Splash.vue'
 
 describe('Splash.vue', () => {
   it('does a thing', () => {

@@ -42,6 +42,7 @@ module.exports = merge(baseConfig, {
               data: `
                 @import "node_modules/mustard-ui/src/scss/vars/colors.scss";
                 @import "node_modules/mustard-ui/src/scss/vars/breakpoints.scss";
+                @import "static/style/overrides.scss";
               `
             }
           }
