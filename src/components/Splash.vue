@@ -1,20 +1,27 @@
 <template>
   <div>
-    <div
-      id="splash"
-      :style="{ backgroundImage: src ? `url('${src}')` : null }"
+    <lazy-background
+      image-source="/static/img/splash.jpg"
+      loading-image="/static/img/splash-low.jpg"
+      image-class="splash"
+      background-size="cover"
     >
       <slot />
-    </div>
+    </lazy-background>
     <div
-      id="splash-spacer"
+      class="splash-spacer"
       :style="{ height: height }"
     />
   </div>
 </template>
 
 <script>
+import LazyBackground from 'components/LazyBackground.vue'
+
 export default {
+  components: {
+    LazyBackground
+  },
   props: {
     src: {
       type: String,
@@ -29,16 +36,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#splash {
+.splash {
   position: absolute;
   background-color: $color-gray-900;
-  background-size: cover;
   top: 0;
   z-index: -1;
   width: 100vw;
   height: 90vh;
 }
-#splash-spacer {
+.splash-spacer {
   margin-top: -60px;
 }
 </style>

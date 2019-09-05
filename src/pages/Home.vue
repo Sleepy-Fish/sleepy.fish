@@ -11,7 +11,12 @@
       <small>Some artwork is temporarily being borrowed...</small>
     </MessageBox>
     <div class="full-width center-content">
-      <div class="content">
+      <lazy-background
+        image-source="/static/img/parchment.png"
+        loading-image="/static/img/parchment-low.png"
+        image-class="content"
+        background-size="cover"
+      >
         <div class="row">
           <ContentCard
             src="https://via.placeholder.com/150x100"
@@ -44,7 +49,7 @@
             width="4"
           />
         </div>
-      </div>
+      </lazy-background>
     </div>
   </div>
 </template>
@@ -53,12 +58,14 @@
 import Splash from 'components/Splash.vue'
 import { MessageBox } from 'components/Boxes'
 import ContentCard from 'components/ContentCard.vue'
+import LazyBackground from 'components/LazyBackground.vue'
 
 export default {
   components: {
     Splash,
     MessageBox,
-    ContentCard
+    ContentCard,
+    LazyBackground
   },
   methods: {
     test (val) {
@@ -75,8 +82,6 @@ export default {
     padding-top: 3vh
   }
   .content {
-    background-image: url("/static/img/parchment.png");
-    background-size: cover;
     min-height:100%;
     padding: 5% 5%;
     @media only screen and (max-width: 767px) {
