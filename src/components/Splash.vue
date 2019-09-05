@@ -1,8 +1,8 @@
 <template>
   <div>
     <lazy-background
-      image-source="/static/img/splash.jpg"
-      loading-image="/static/img/splash-low.jpg"
+      :image-source="src"
+      :loading-image="loading"
       image-class="splash"
       background-size="cover"
     >
@@ -24,6 +24,10 @@ export default {
   },
   props: {
     src: {
+      type: String,
+      default: null
+    },
+    loading: {
       type: String,
       default: null
     },

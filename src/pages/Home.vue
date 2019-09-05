@@ -2,6 +2,7 @@
   <div>
     <Splash
       src="/static/img/splash.jpg"
+      loading="/static/img/splash-low.jpg"
       height="75vh"
     />
     <MessageBox title="Sorry...">
