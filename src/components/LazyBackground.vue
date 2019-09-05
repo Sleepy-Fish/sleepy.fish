@@ -25,13 +25,13 @@ export default {
     loadingImage: {
       type: String,
       required: true,
-      default: 'image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII='
+      default: window.pixels.dark
 
     },
     errorImage: {
       type: String,
       required: false,
-      default: 'image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+      default: window.pixels.clear
     },
     backgroundSize: {
       type: String,

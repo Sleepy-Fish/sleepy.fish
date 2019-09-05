@@ -25,11 +25,11 @@ export default {
   props: {
     src: {
       type: String,
-      default: null
+      default: window.pixels.clear
     },
     loading: {
       type: String,
-      default: null
+      default: window.pixels.clear
     },
     height: {
       type: String,
