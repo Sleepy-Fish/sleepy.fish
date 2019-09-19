@@ -23,14 +23,14 @@
   "dependencies": {
     "mustard-ui": "0.0.8",
     "vue": "^2.6.10",
-    "vue-router": "^3.1.2"
+    "vue-router": "^3.1.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-eslint": "^10.0.2",
+    "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.4",
@@ -41,24 +41,24 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^5.2.3",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
     "jest-serializer-vue": "^2.0.2",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.12.0",
-    "sass-loader": "^7.2.0",
+    "sass-loader": "^7.3.1",
     "style-loader": "^1.0.0",
     "uglify-es": "^3.3.9",
     "url-loader": "^1.1.2",
-    "vue-jest": "^3.0.4",
+    "vue-jest": "^3.0.5",
     "vue-loader": "^15.7.1",
     "vue-server-renderer": "^2.6.10",
     "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0",
-    "webpack-merge": "^4.2.1"
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1",
+    "webpack-merge": "^4.2.2"
   }
 }
