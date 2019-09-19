@@ -45,32 +45,48 @@ export default {
     this.members = [
       {
         name: 'J Riley Harrington',
-        img: 'https://via.placeholder.com/150x150',
-        email: 'jrileyharrington@gmail.com',
+        img: 'static/img/headshots/riley.jpg',
+        email: 'riley@sleepy.fish',
         position: 'Founder + Engineer',
         description: 'When the company needs starting, someone needs to do it. This guy really just wanted to be a programmer but no company would make the exact game he wanted to play so he had to start his own. What other options did he have?',
         real: true
       },
       {
+        name: 'Jeremy Doss',
+        img: 'static/img/headshots/jeremy.jpg',
+        email: 'jeremy@sleepy.fish',
+        position: 'Founder + Engineer',
+        description: 'We hired this guy because his last name sounded like a computery thing. That\'s really all he has going for him.',
+        real: true
+      },
+      {
+        name: 'Hannah Rucker',
+        img: 'https://via.placeholder.com/150x150',
+        email: 'hannah@sleepy.fish',
+        position: 'Operations Manager',
+        description: 'This company was on the  like shit until she showed up. She does alot of thing that help everyone and blah blah. I just gotta get this long enough or the design will break.',
+        real: true
+      },
+      {
+        name: 'Lauren Grills',
+        img: 'static/img/headshots/lauren.jpg',
+        email: 'lauren@sleepy.fish',
+        position: 'UI Engineer',
+        description: 'She writes code. She makes UIs. She does not ask for much in return. That is why we like her.',
+        real: true
+      },
+      {
+        name: 'Caleb Rogers',
+        img: 'https://via.placeholder.com/150x150',
+        email: 'caleb@sleepy.fish',
+        position: 'Web Engineer',
+        description: 'Someone has to build the websites and browser games. Why not this schmuck? He worked on such earth shattering Sleepy Fish titles as Frog Farts. And Frog Farts 2: The Fartening. We hope to see more out of this noob soon.',
+        real: true
+      },
+      {
         name: 'James Riley',
         img: 'https://via.placeholder.com/150x150',
-        email: 'jrileyharrington@gmail.com',
-        position: 'Artistic Director',
-        description: 'This company looked like shit until this guy showed up. It still looks like shit but now we can safely hide behind the defense that this was just our artistic vision so fuck you. Best purchase we ever made.',
-        real: false
-      },
-      {
-        name: 'Riggy James',
-        img: 'https://via.placeholder.com/150x150',
-        email: 'jrileyharrington@gmail.com',
-        position: 'Game Play Engineer',
-        description: 'Once every was done coming up with ideas some one had to actually bring home the bacon. We found this guy in the back of a Best Buy argueing with a 16 year old employee. We brought him home, cleaned him up, faced him towards a computer, and he hasn\'t stopped churning out code ever since.',
-        real: false
-      },
-      {
-        name: 'Harry O\'Riley',
-        img: 'https://via.placeholder.com/150x150',
-        email: 'jrileyharrington@gmail.com',
+        email: 'riley@sleepy.fish',
         position: 'All-In-One Artist',
         description: 'We could have hired a concept artist, environment artist, 3D modeller, rigger, animator, and an illustrator. Instead we found a chump who would do it all for free. Please no one tell him that he is doing the job of size people. It would literally ruin us.',
         real: false
@@ -78,17 +94,9 @@ export default {
       {
         name: 'J.R.R. Harring',
         img: 'https://via.placeholder.com/150x150',
-        email: 'jrileyharrington@gmail.com',
+        email: 'riley@sleepy.fish',
         position: 'Designer + Writer',
         description: 'We kept realizing that every game we tried to make was an accidently reboot of <a href="https://en.wikipedia.org/wiki/Zombies_Ate_My_Neighbors">Zombies Ate My Neighbors</a> so we eventually threw in the towel and agreed we would leave game design up to a professional. Unfortunately those people are expensive so we settled for this guy. Whatever.',
-        real: false
-      },
-      {
-        name: 'Riley H. James',
-        img: 'https://via.placeholder.com/150x150',
-        email: 'jrileyharrington@gmail.com',
-        position: 'Code Monkey',
-        description: 'Programming the games is the fun part. The real unsung heroes work on everything else because as it turns out, creating a game company requires more than just game programmers. We still can\'t figure out what makes this guy tick but we sure do appreciate him.',
         real: false
       }
     ]
