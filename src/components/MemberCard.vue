@@ -2,7 +2,7 @@
   <div class="card-wrapper">
     <div
       class="card"
-      :class="'align-' + float"
+      :class="'align-' + opp(float)"
     >
       <h5 class="align-center">
         {{ member.name }}
@@ -15,7 +15,8 @@
       <h4>{{ member.position }}</h4>
       <a :href="'mailto:' + member.email">{{ member.email }}</a>
       <hr style="margin:10px 0px;">
-      <small>{{ member.description }}</small>
+      <!-- eslint-disable -->
+      <small v-html="member.description" />
     </div>
   </div>
 </template>
