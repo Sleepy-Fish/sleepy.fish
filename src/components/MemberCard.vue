@@ -13,7 +13,7 @@
         :style="'background-image: url(' + member.img + '); margin-' + opp(float) + ': 50px;'"
       />
       <h4>{{ member.position }}</h4>
-      <a :href="'mailto:' + member.email">{{ member.email }}</a>
+      <a :href="'mailto:' + member.email">{{ member.real ? member.email : 'Apply For This Job' }}</a>
       <hr style="margin:10px 0px;">
       <!-- eslint-disable -->
       <small v-html="member.description" />
