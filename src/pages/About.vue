@@ -84,19 +84,19 @@ export default {
         real: true
       },
       {
-        name: 'James Riley',
+        name: 'Could Be You',
         img: 'https://via.placeholder.com/150x150',
         email: 'riley@sleepy.fish',
         position: 'All-In-One Artist',
-        description: 'We could have hired a concept artist, environment artist, 3D modeller, rigger, animator, and an illustrator. Instead we found a chump who would do it all for free. Please no one tell him that he is doing the job of size people. It would literally ruin us.',
+        description: 'We are looking for help with all artistic endevours. Concept art, environmental art, 3D modelling, rigging, animating, and illustrating. This sort of stuff required a whole team but we are accepting any help we can get. Otherwise Riley is going to do it and it will not be great.',
         real: false
       },
       {
-        name: 'J.R.R. Harring',
+        name: 'Could Be You',
         img: 'https://via.placeholder.com/150x150',
         email: 'riley@sleepy.fish',
         position: 'Designer + Writer',
-        description: 'We kept realizing that every game we tried to make was an accidently reboot of <a href="https://en.wikipedia.org/wiki/Zombies_Ate_My_Neighbors">Zombies Ate My Neighbors</a> so we eventually threw in the towel and agreed we would leave game design up to a professional. Unfortunately those people are expensive so we settled for this guy. Whatever.',
+        description: 'We have got some great ideas in the works here at Sleepy Fish but we are in constant need of help refining and making those ideas concrete. If you want to get involved in the creative side of designing games we are accepting all the help we can get.',
         real: false
       }
     ]
