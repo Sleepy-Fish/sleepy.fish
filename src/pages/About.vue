@@ -47,24 +47,32 @@ export default {
         name: 'J Riley Harrington',
         img: 'static/img/headshots/riley.jpg',
         email: 'riley@sleepy.fish',
-        position: 'Founder + Engineer',
+        position: 'Game Engineer',
         description: 'When the company needs starting, someone needs to do it. This guy really just wanted to be a programmer but no company would make the exact game he wanted to play so he had to start his own. What other options did he have?',
+        real: true
+      },
+      {
+        name: 'Stuart Harrington',
+        img: 'https://via.placeholder.com/150x150',
+        email: 'stu@sleepy.fish',
+        position: 'Art Director',
+        description: 'Brother to Riley. Also a great artist with a love for video games and a respect for details that make games great. Is in charge of artistic direction of all games at Sleepy Fish as well as much of the game design itself.',
+        real: true
+      },
+      {
+        name: 'Hannah Rucker',
+        img: 'static/img/headshots/hannah.jpg',
+        email: 'hannah@sleepy.fish',
+        position: 'Operations',
+        description: 'The glue that keeps this company together. I would say she is the unsung hero but we find ourselves constantly singing about her. She does all the things we never even know we had to do and we thank Thor that we have her to do it for us.',
         real: true
       },
       {
         name: 'Jeremy Doss',
         img: 'static/img/headshots/jeremy.jpg',
         email: 'jeremy@sleepy.fish',
-        position: 'Founder + Engineer',
-        description: 'We hired this guy because his last name sounded like a computery thing. That\'s really all he has going for him.',
-        real: true
-      },
-      {
-        name: 'Hannah Rucker',
-        img: 'https://via.placeholder.com/150x150',
-        email: 'hannah@sleepy.fish',
-        position: 'Operations Manager',
-        description: 'This company was on the  like shit until she showed up. She does alot of thing that help everyone and blah blah. I just gotta get this long enough or the design will break.',
+        position: 'Game Engineer',
+        description: 'We hired this guy because his last name sounded like a computery thing. That\'s really all he has going for him. We still need a bio for him so waiting waiting',
         real: true
       },
       {
@@ -72,7 +80,7 @@ export default {
         img: 'static/img/headshots/lauren.jpg',
         email: 'lauren@sleepy.fish',
         position: 'UI Engineer',
-        description: 'She writes code. She makes UIs. She does not ask for much in return. That is why we like her.',
+        description: 'She writes code. She makes UIs. She does not ask for much in return. That is why we like her. Working normally as a database administrator she took on the challange of learning game programming to help us with our projects.',
         real: true
       },
       {
@@ -80,7 +88,7 @@ export default {
         img: 'https://via.placeholder.com/150x150',
         email: 'caleb@sleepy.fish',
         position: 'Web Engineer',
-        description: 'Someone has to build the websites and browser games. Why not this schmuck? He worked on such earth shattering Sleepy Fish titles as Frog Farts. And Frog Farts 2: The Fartening. We hope to see more out of this noob soon.',
+        description: 'Someone has to build the websites and browser games. Why not this schmuck? He worked on such earth shattering Sleepy Fish titles as Frog Farts. And Frog Farts 2: The Fartening. We hope to see more out of him soon because what ever "it" is... He\'s got it.',
         real: true
       },
       {
