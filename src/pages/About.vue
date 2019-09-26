@@ -26,7 +26,7 @@
       </section>
 
       <section class="section-tertiary">
-        <p>maybe a third thing if you can think of it</p>
+        <p>Maybe a third thing if you can think of it!</p>
       </section>
     </div>
   </div>
