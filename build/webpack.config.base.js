@@ -8,7 +8,7 @@ const utils = require('./utils')
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json', '.md'],
     alias: {
       'assets': utils.resolve('assets'),
       'pages': utils.resolve('src/pages'),
@@ -27,6 +27,9 @@ module.exports = {
         test: /\.vue$/,
         use: 'vue-loader'
       }, {
+        test: /\.md$/,
+        loader: "raw-loader"
+      },{
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -73,6 +76,10 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: utils.resolve('static/img'),
       to: utils.resolve('dist/static/img'),
+      toType: 'dir'
+    }, {
+      from: utils.resolve('static/data'),
+      to: utils.resolve('dist/static/data'),
       toType: 'dir'
     }])
   ]

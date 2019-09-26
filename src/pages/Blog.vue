@@ -4,7 +4,11 @@
     <div class="full-width center-content">
       <div class="content">
         <div class="row">
-          Blog
+          <post-card
+            v-for="post in posts"
+            :key="post.id"
+            :post="post"
+          />
         </div>
       </div>
     </div>
@@ -12,11 +16,17 @@
 </template>
 
 <script>
-import Splash from 'components/Splash.vue'
+import Splash from 'components/Splash'
+import PostCard from 'components/PostCard'
+import posts from 'static/data/posts'
 
 export default {
   components: {
-    Splash
+    Splash,
+    PostCard
+  },
+  beforeCreate () {
+    this.posts = posts
   }
 }
 </script>

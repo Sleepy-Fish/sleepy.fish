@@ -1,6 +1,7 @@
 import './pixels'
 import Vue from 'vue'
 import router from './router'
+import './filters'
 import App from './App'
 
 import 'mustard-ui/src/scss/mustard-ui.scss'

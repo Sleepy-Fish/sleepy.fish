@@ -1,0 +1,22 @@
+[
+  {
+    "id": "first-post",
+    "date": 1569493090245,
+    "title": "The First Post I've Made",
+    "author": "J Riley Harrington",
+    "img": "https://via.placeholder.com/150x150",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "tags": [ "announcement" ],
+    "markdown":"static/data/md/first-post.md"
+  },
+  {
+    "id": "second-post",
+    "date": 1569495974030,    
+    "title": "The Second Post I've Made",
+    "author": "J Riley Harrington",
+    "img": "https://via.placeholder.com/150x150",
+    "description": "An enthralling sequel of blogging ang posts",
+    "tags": [ "game", "tech" ],
+    "markdown":"static/data/md/second-post.md"
+  }
+]

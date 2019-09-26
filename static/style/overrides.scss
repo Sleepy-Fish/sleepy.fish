@@ -38,6 +38,21 @@ $section-primary-bg-color: $color-gray-900;
 $section-secondary-bg-color: $brand-color;
 $section-tertiary-bg-color: $color-gray-300;
 
+// ==== Tags ==== //
+$tag-default-color: $brand-color;
+$tag-colors: (
+    // add additional tag types here
+    'game'    : $color-cyan-500,
+    'tech'     : $color-lime-600,
+    'announcement'   : $color-deep-purple-500
+);
+// man fuck this mustard ui dev for hard coding box shadow
+.tags {
+  .tag {
+    box-shadow: none;
+  }
+}
+
 // ==== Grid ==== //
 .row {
   &.row-centered {

@@ -1,11 +1,13 @@
 import Home from './Home'
 import Games from './Games'
-import Blog from './Blog'
 import About from './About'
+import Blog from './Blog'
+import Post from './Post'
 
 export {
   Home,
   Games,
+  About,
   Blog,
-  About
+  Post
 }

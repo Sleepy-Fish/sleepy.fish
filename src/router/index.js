@@ -1,18 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import blogPosts from 'static/blog/posts'
 
-import { Home, Games, Blog, About } from 'pages'
+import { Home, Games, Blog, Post, About } from 'pages'
 
 Vue.use(Router)
-
-console.log(blogPosts)
 
 const routes = [
   {
     path: '*',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
   },
   {
     path: '/games',
@@ -25,9 +27,9 @@ const routes = [
     component: Blog
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
+    path: '/blog/:id',
+    name: 'Post',
+    component: Post
   }
 ]
 
