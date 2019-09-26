@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import blogPosts from 'static/blog/posts'
 
-import { Home, Games, Projects, Extras, About } from 'pages'
+import { Home, Games, Blog, About } from 'pages'
 
 Vue.use(Router)
+
+console.log(blogPosts)
 
 const routes = [
   {
@@ -17,14 +20,9 @@ const routes = [
     component: Games
   },
   {
-    path: '/projects',
-    name: 'Projects',
-    component: Projects
-  },
-  {
-    path: '/extras',
-    name: 'Extras',
-    component: Extras
+    path: '/blog',
+    name: 'Blog',
+    component: Blog
   },
   {
     path: '/about',

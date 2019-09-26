@@ -53,12 +53,8 @@ export default {
           page: '/games'
         },
         {
-          text: 'Projects',
-          page: '/projects'
-        },
-        {
-          text: 'Extras',
-          page: '/extras'
+          text: 'Blog',
+          page: '/blog'
         }
       ]
     }

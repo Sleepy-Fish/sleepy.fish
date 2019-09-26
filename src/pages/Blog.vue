@@ -4,7 +4,7 @@
     <div class="full-width center-content">
       <div class="content">
         <div class="row">
-          Extras
+          Blog
         </div>
       </div>
     </div>
