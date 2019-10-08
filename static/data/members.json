@@ -9,10 +9,10 @@
   },
   {
     "name": "Stuart Harrington",
-    "img": "https://via.placeholder.com/150x150",
+    "img": "static/img/headshots/hannah.jpg",
     "email": "stu@sleepy.fish",
     "position": "Art Director",
-    "description": "Brother to Riley. Also a great artist with a love for video games and a respect for details that make games great. Is in charge of artistic direction of all games at Sleepy Fish as well as much of the game design itself.",
+    "description": "Brother to Riley. Also a great artist with a love for video games and a respect for details that make games great. Stu is in charge of artistic direction of all games at Sleepy Fish as well as much of the game design and asset creation itself.",
     "real": true
   },
   {
@@ -20,7 +20,7 @@
     "img": "static/img/headshots/hannah.jpg",
     "email": "hannah@sleepy.fish",
     "position": "Operations",
-    "description": "The glue that keeps this company together. I would say she is the unsung hero but we find ourselves constantly singing about her. She does all the things we never even know we had to do and we thank Thor that we have her to do it for us.",
+    "description": "The glue that keeps this company together. I would say she is the unsung hero but we actually find ourselves singing about her often. She takes care of all the business of building a company and keeping wandering minds in line and working effeciently. She if the difference between a functional company and abunch of dweeps on their computers.",
     "real": true
   },
   {
@@ -28,7 +28,7 @@
     "img": "static/img/headshots/jeremy.jpg",
     "email": "jeremy@sleepy.fish",
     "position": "Game Engineer",
-    "description": "We hired this guy because his last name sounded like a computery thing. That's really all he has going for him. We still need a bio for him so waiting waiting",
+    "description": "Jeremy has a passion for programming and it shows in his work. Originally a .NET programmer, he dove into game programming on a quest to conquer new and uncharted parts of his craft. He works on our core platform games and manages engineering day to day challanges.",
     "real": true
   },
   {
@@ -36,23 +36,23 @@
     "img": "static/img/headshots/lauren.jpg",
     "email": "lauren@sleepy.fish",
     "position": "UI Engineer",
-    "description": "She writes code. She makes UIs. She does not ask for much in return. That is why we like her. Working normally as a database administrator she took on the challange of learning game programming to help us with our projects.",
+    "description": "She writes clean code. She builds clean UIs. She moves projects forward like the little tank engine that could. That is why we like her. Getting her start in database administration she took on the challange of learning game programming to develop new skills and contibute to a creative and collabrative endevour.",
     "real": true
   },
   {
     "name": "Caleb Rogers",
-    "img": "https://via.placeholder.com/150x150",
+    "img": "static/img/headshots/caleb.jpg",
     "email": "caleb@sleepy.fish",
     "position": "Web Engineer",
-    "description": "Someone has to build the websites and browser games. Why not this schmuck? He worked on such earth shattering Sleepy Fish titles as Frog Farts. And Frog Farts 2: The Fartening. We hope to see more out of him soon because what ever \"it\" is... He's got it.",
+    "description": "Caleb has a spirit of someone who will never stop learning knew skills. He came onto our team as a web engineer to help our website and work on browser game jams. He is quickly taking on a role of game engineer as he dives into our core platform games. ",
     "real": true
   },
   {
     "name": "Could Be You",
     "img": "https://via.placeholder.com/150x150",
     "email": "riley@sleepy.fish",
-    "position": "All-In-One Artist",
-    "description": "We are looking for help with all artistic endevours. Concept art, environmental art, 3D modelling, rigging, animating, and illustrating. This sort of stuff required a whole team but we are accepting any help we can get. Otherwise Riley is going to do it and it will not be great.",
+    "position": "Animator",
+    "description": "We are looking for help with bringing our art to life. 3D modelling, 2D / 3D rigging and animating. If you have a passion for creating characters, making interactive environments, and ultimately building immersive game experiences we could really use the help!",
     "real": false
   },
   {
@@ -60,7 +60,7 @@
     "img": "https://via.placeholder.com/150x150",
     "email": "riley@sleepy.fish",
     "position": "Designer + Writer",
-    "description": "We have got some great ideas in the works here at Sleepy Fish but we are in constant need of help refining and making those ideas concrete. If you want to get involved in the creative side of designing games we are accepting all the help we can get.",
+    "description": "We have got some great ideas in the works here at Sleepy Fish but we are in constant need of help refining and making those ideas concrete and fleshed out as well as add new great ideas to the pool. This role involves designing game mechanics, story-boarding, writing, and working closely artists and engineers to actualize our shared vision. If you want to get involved in the creative side of designing games we are accepting all the help we can get.",
     "real": false
   }
 ]
