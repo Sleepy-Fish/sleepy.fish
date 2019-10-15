@@ -13,7 +13,8 @@
         v-for="tag in post.tags"
         :key="tag"
         class="tag"
-        :class="'tag-' + tag"
+        :class="'tag-' + tag | classify"
+        @click="$parent.filter(tag)"
       >
         {{ tag }}
       </li>
@@ -46,6 +47,9 @@ export default {
   }
   .tags {
     margin: 20px 0px;
+    .tag {
+      cursor: pointer;
+    }
   }
   .description-spacer {
     min-height: 200px;
