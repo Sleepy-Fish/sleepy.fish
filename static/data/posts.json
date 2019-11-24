@@ -1,13 +1,13 @@
 [
   {
     "id": "first-post",
-    "date": 1570979004253,
-    "title": "Field Of View Lighting",
+    "date": 1574628425653,
+    "title": "2D Field Of View Lighting",
     "author": "J Riley Harrington",
-    "img": "https://via.placeholder.com/150x150",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "img": "static/img/blog/2d-fov-lighting/smooth-lightmesh.png",
+    "description": "Casting light and shadows that play off of the environment can be a trick but if done well can add alot to a game! In The Pit, light plays an extremely imporant role not only in the game's asthetics but game play as well. Here is a first look at how we handled 2 dimensional lighting by writing 2D field of view.",
     "tags": [ "Game", "The Pit" ],
-    "markdown":"static/data/md/first-post.md"
+    "markdown":"static/data/md/2d-fov-lighting.md"
   },
   {
     "id": "second-post",

@@ -20,7 +20,9 @@
       </li>
     </ul>
     <div class="description-spacer">
-      <img :src="post.img">
+      <div class="img">
+        <img :src="post.img"/>
+      </div>
       <!-- eslint-disable -->
       <small v-html="post.description" />
     </div>
@@ -57,10 +59,17 @@ export default {
     padding-bottom: 20px;
     border-bottom: solid 1px white;
   }
-  img {
+  .img {
     float: left;
     margin-right: 30px;
     margin-bottom: 10px;
+    width: 150px;
+    height: 150px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 </style>
