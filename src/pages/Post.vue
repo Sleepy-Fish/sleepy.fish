@@ -17,11 +17,24 @@
 <script>
 import posts from 'static/data/posts'
 import axios from 'axios'
+
+import 'prismjs/components/prism-core'
+import 'prismjs/components/prism-clike'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-csharp'
+import 'prismjs/themes/prism-tomorrow.css'
+
 const md = require('markdown-it')({
   html: true,
   linkify: true,
   typographer: true
 })
+  .use(require('markdown-it-sub'))
+  .use(require('markdown-it-sup'))
+  .use(require('markdown-it-abbr'))
+  .use(require('markdown-it-emoji'))
+  .use(require('markdown-it-mark'))
+  .use(require('markdown-it-prism'))
 
 export default {
   created () {
@@ -36,7 +49,6 @@ export default {
   mounted () {
     if (this.post.markdown) {
       axios.get(this.post.markdown).then(response => {
-        console.log(md.render(response.data))
         this.post.html = md.render(response.data)
         this.$forceUpdate()
       })

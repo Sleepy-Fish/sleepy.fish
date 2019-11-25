@@ -21,7 +21,7 @@
     </ul>
     <div class="description-spacer">
       <div class="img">
-        <img :src="post.img"/>
+        <img :src="post.img">
       </div>
       <!-- eslint-disable -->
       <small v-html="post.description" />

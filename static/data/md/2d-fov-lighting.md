@@ -105,6 +105,51 @@ var foo = function (bar) {
 console.log(foo(5));
 ```
 
+``` js
+using System;
+
+namespace ProgrammingGuide
+{
+   // Class definition.
+   public class CustomClass
+   {
+      // Class members.
+      //
+      // Property.
+      public int Number { get; set; }
+
+      // Method.
+      public int Multiply(int num)
+      {
+          return num * Number;
+      }
+
+      // Instance Constructor.
+      public CustomClass()
+      {
+          Number = 0;
+      }
+   }
+
+   // Another class definition that contains Main, the program entry point.
+   class Program
+   {
+      static void Main(string[] args)
+      {
+         // Create an object of type CustomClass.
+         CustomClass custClass = new CustomClass();
+
+         // Set the value of the public property.
+         custClass.Number = 27;
+
+         // Call the public method.
+         int result = custClass.Multiply(4);
+         Console.WriteLine($"The result is {result}.");
+      }
+   }
+}
+```
+
 ## Tables
 
 | Option | Description |
@@ -225,9 +270,3 @@ This is HTML abbreviation example.
 It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
 *[HTML]: Hyper Text Markup Language
-
-### [Custom containers](https://github.com/markdown-it/markdown-it-container)
-
-::: warning
-*here be dragons*
-:::

@@ -7,5 +7,13 @@
         "node": "current"
       }
     }]
+  ],
+  "plugins": [
+    ["prismjs", {
+        "languages": ["javascript", "html", "css", "csharp"],
+        "plugins": [],
+        "theme": "tomorrow",
+        "css": true
+    }]
   ]
 }
