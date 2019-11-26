@@ -1,272 +1,132 @@
-# h1 Heading 8-)
-## h2 Heading
-### h3 Heading
-#### h4 Heading
-##### h5 Heading
-###### h6 Heading
+## Doing things
+Lighting is a pretty dope 
 
-
-## Horizontal Rules
-
-___
-
+### Ray Casting
 ---
+Ray casting is a core components of computer graphics. The idea is simple but extremely useful and with modern engines can be a very low cost method of mimicing more complex graphical phenomena. In this post we show we used some pretty simple ray casting algorithms to build a dynamic lighting system for our 2D game The Pit. But first lets go over some basics of how you can use Ray Casting in the Unity engine.
 
-***
+::: frame black
+![Ray Casting](static/img/blog/2d-fov-lighting/simple-raycasting.gif)
+---
+**Object Awareness demonstrated using Ray Casting in 2D demo.**
+:::
 
+<br>
 
-## Typographic replacements
+### Set Up
 
-Enable typographer option to see result.
+If you're reading a post about Field of View, chances are you have your own way you want to implement this into a game so I will waste the minimal amount of time settings up some 2D platformer boilerplate. When we get to it I will try to keep the Field Of View logic sufficiently abstract and pluggable into any Unity GameObject you want. I encourage you to skip this step if you already have a working platform style game boilerplate because I will be cutting many corners. Otherwise, feel free to follow along or clone my boilerplate from github.
 
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+[Unity Platformer Boilerplate](https://github.com/Sleepy-Fish/fov-tutorial/releases/tag/Setup)
 
-test.. test... test..... test?..... test!....
+##### 1. Add A Scene
+Right click your assets to open the context menu, select **Create > Scene**. I named my scene Demo. Open this new scene if your project is 2D you should be looking at a blank scene with just the default Main Camera object in it.
 
-!!!!!! ???? ,,  -- ---
+##### 2. Add Some Sprites
+Right click your assets to open the context menu, select **Create > Sprites > Square** and **Create > Sprites > Circle**. I kept it simple and named these assets Square and Circle respectively.
 
-"Smartypants, double quotes" and 'single quotes'
+##### 3. Create A Controller Script
+How you want to setup the player controller and movement is totally up to you but having something in place before you start is always good so you can demo as you go. I wrote a very rough controller that provides basic jumping and horizontal movement with whatever input your Unity Project is mapped to use. Right click your assets to open the context menu, select **Create > C# Script** and add the replace its content with the following code:
 
+``` csharp
+using UnityEngine;
 
-## Emphasis
+public class Controller : MonoBehaviour {
+  Rigidbody2D body;
+  float runSpeed = 4f;
+  float jumpSpeed = 7f;
+  float rotationSpeed = 0.2f;
 
-**This is bold text**
+  void Start() {
+    body = GetComponent<Rigidbody2D>();
+  }
 
-__This is bold text__
-
-*This is italic text*
-
-_This is italic text_
-
-~~Strikethrough~~
-
-
-## Blockquotes
-
-
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
-
-
-## Lists
-
-Unordered
-
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-+ Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
-
-
-## Code
-
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Syntax highlighting
-
-``` js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-```
-
-``` js
-using System;
-
-namespace ProgrammingGuide
-{
-   // Class definition.
-   public class CustomClass
-   {
-      // Class members.
-      //
-      // Property.
-      public int Number { get; set; }
-
-      // Method.
-      public int Multiply(int num)
-      {
-          return num * Number;
-      }
-
-      // Instance Constructor.
-      public CustomClass()
-      {
-          Number = 0;
-      }
-   }
-
-   // Another class definition that contains Main, the program entry point.
-   class Program
-   {
-      static void Main(string[] args)
-      {
-         // Create an object of type CustomClass.
-         CustomClass custClass = new CustomClass();
-
-         // Set the value of the public property.
-         custClass.Number = 27;
-
-         // Call the public method.
-         int result = custClass.Multiply(4);
-         Console.WriteLine($"The result is {result}.");
-      }
-   }
+  void Update() {
+    // Horizontal Velocity
+    float hv = Input.GetAxis("Horizontal") * runSpeed;
+    // Vertical Velocity
+    float vv = body.velocity.y;
+    // Jump Control Input
+    if (Input.GetKeyDown("space")) vv += jumpSpeed;
+    // Update Player Velocity
+    body.velocity = new Vector2(hv, vv);
+    // Keey Player Upright
+    body.rotation = Mathf.Lerp(body.rotation, 0f, rotationSpeed);
+  }
 }
+
 ```
 
-## Tables
+##### 4. Create Some GameObjects
 
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
+**Create a Player GameObject**
+This is what you attach your controller to and will eventually be the focal point for our FOV class
 
-Right aligned columns
+::: frame black
+![Player Settings](static/img/blog/2d-fov-lighting/player-settings.png =350x)
+---
+**Player GameObjects Unity Settings.**
+:
+ - Transform: (Scale: {y: 2})
+ - Capsule Collider 2D: (Default Settings)
+ - Rigidbody 2D: (Default Settings)
+ - Sprite Renderer: (Sprite: Circle, Color: Red)
+ - Controller Script
+:::
 
-| Option | Description |
-| ------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
+**Create a Level GameObject**
+This is just a container for all your level obstacles
 
+::: frame black
+![Player Sprite Settings](static/img/blog/2d-fov-lighting/level-settings.png =350x)
+---
+**Components:**
+ - Transorm: (Default Settings)
+:::
 
-## Links
+**Create an Items GameObject**
+This is just a container for all your items that may be in your level
 
-[link text](http://dev.nodeca.com)
-
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
-
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
-
-
-## Images
-
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-
-Like links, Images also have a footnote style syntax
-
-![Alt text][id]
-
-With a reference later in the document defining the URL location:
-
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+::: frame black
+![Player Sprite Settings](static/img/blog/2d-fov-lighting/items-settings.png =350x)
+---
+**Components:**
+ - Transorm: (Default Settings)
+:::
 
 
-## Plugins
 
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
+##### 5. Create Some Prefabs
 
+**Create an Obstacle Prefab**
+You can place a couple of these as children of Level when you're done (e.g. Floor, Wall, Platform, etc)
 
-### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
+::: frame black
+![Player Sprite Settings](static/img/blog/2d-fov-lighting/obstacle-settings.png =350x)
+---
+**Components:**
+ - Transorm: (Default Settings)
+ - Box Collider 2D (Default Settings)
+ - Rigidbody 2D: (Type: static)
+ - Sprite Renderer (Sprite: Square, Color: Black)
+:::
 
-> Classic markup: :wink: :crush: :cry: :tear: :laughing: :yum:
->
-> Shortcuts (emoticons): :-) :-( 8-) ;)
+**Create an Item Prefab**
+These could be items or power ups in your game. In other words, they can be detected by the player but they aren't collided with so they will not need a Rigidbody component.
 
-see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
+::: frame black
+![Player Sprite Settings](static/img/blog/2d-fov-lighting/item-settings.png =350x)
+---
+**Components:**
+ - Transorm: (Default Settings)
+ - Circle Collider 2D (IsTrigger: true)
+ - Sprite Renderer (Sprite: Circle, Color: Blue)
+:::
 
+You should now have all the objects you need in place to build yourself a nice little scene! Just drag some Object prefabs into your level object and a few Item prefabs into you Items object, rearrange and resize them to your living and build yourself a little playground! You should be able to hop about the scene if you play at this point.
 
-### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
-
-- 19^th^
-- H~2~O
-
-
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
-
-++Inserted text++
-
-
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
-
-==Marked text==
-
-
-### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
-
-Footnote 1 link[^first].
-
-Footnote 2 link[^second].
-
-Inline footnote^[Text of inline footnote] definition.
-
-Duplicated footnote reference[^second].
-
-[^first]: Footnote **can have markup**
-
-    and multiple paragraphs.
-
-[^second]: Footnote text.
-
-
-### [Definition lists](https://github.com/markdown-it/markdown-it-deflist)
-
-Term 1
-
-:   Definition 1
-with lazy continuation.
-
-Term 2 with *inline markup*
-
-:   Definition 2
-
-        { some code, part of Definition 2 }
-
-    Third paragraph of definition 2.
-
-_Compact style:_
-
-Term 1
-  ~ Definition 1
-
-Term 2
-  ~ Definition 2a
-  ~ Definition 2b
-
-
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
-
-This is HTML abbreviation example.
-
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
-
-*[HTML]: Hyper Text Markup Language
+::: frame black
+![Player Sprite Settings](static/img/blog/2d-fov-lighting/setup-complete.gif =350x)
+---
+**Game of the Year award, here we come!**
+:::
