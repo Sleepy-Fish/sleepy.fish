@@ -130,3 +130,100 @@ You should now have all the objects you need in place to build yourself a nice l
 ---
 **Game of the Year award, here we come!**
 :::
+
+### Object Awareness
+
+Add Sensor script
+``` csharp
+using UnityEngine;
+
+public class Sensor : MonoBehaviour {
+    public float viewRadius = 4f;
+
+    void Update() {
+        
+    }
+}
+```
+
+Add editor script
+``` csharp
+using UnityEngine;
+using UnityEditor;
+
+[CustomEditor (typeof (Sensor))]
+public class SensorEditor : Editor {
+    void OnSceneGUI() {
+        Sensor sensor = (Sensor)target;
+        Handles.DrawWireDisc(sensor.transform.position, Vector3.forward, sensor.viewRadius);
+    }
+}
+```
+
+Attach script to player object.
+
+::: frame black
+![View Radius](static/img/blog/2d-fov-lighting/sensor-view-radius.png =450x)
+---
+**Sensory View Radius as seen in the editor**
+:::
+
+Add layers
+
+``` csharp
+public LayerMask itemLayer;
+public LayerMask obstacleLayer;
+```
+
+Add new layers to the Level and Items
+
+::: frame black
+![Add New Layer](static/img/blog/2d-fov-lighting/add-layer.png =350x)
+---
+**Layers allow you to interact with specific groups of game objects**
+:::
+
+Assign the new layers to public variables
+
+::: frame black
+![Add New Layer](static/img/blog/2d-fov-lighting/set-layers.png =350x)
+---
+**Make the layers accessible in your sensor instance**
+:::
+
+Add some basic awareness script
+
+``` csharp
+// ... In Sensor class
+  public List<GameObject> sensed = new List<GameObject>();
+
+  void Sense () {
+    sensed.Clear();
+    Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, viewRadius, itemLayer);
+    foreach (Collider2D collider in inRange) {
+      GameObject target = collider.gameObject;
+      sensed.Add(target);
+    }
+  }
+
+  void Update() {
+    Sense();
+  }
+```
+
+And to the editor
+
+``` csharp
+// ... In SensorEditor OnSceneGUI function
+  foreach (GameObject target in sensor.sensed) {
+    Handles.DrawLine(sensor.transform.position, target.transform.position);
+  }
+```
+
+::: frame black
+![Object Awareness](static/img/blog/2d-fov-lighting/object-awareness.gif)
+---
+**White lines represent what the player is "Aware" of an item**
+:::
+
+Now we tackle the ray casting
