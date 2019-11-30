@@ -4,19 +4,19 @@
       src="/static/img/splash.jpg"
       loading="/static/img/splash-low.jpg"
       height="75vh"
-    />
-    <MessageBox title="Sorry...">
-      <p class="warning-text">
-        This site is under construction
-      </p>
-      <small>Some artwork is temporarily being borrowed...</small>
-    </MessageBox>
+    >
+      <matter-background />
+      <MessageBox title="Sorry...">
+        <p class="warning-text">
+          This site is under construction
+        </p>
+      </MessageBox>
+    </Splash>
     <div class="full-width center-content">
       <lazy-background
         image-source="/static/img/parchment.png"
         loading-image="/static/img/parchment-low.png"
         image-class="content"
-        background-size="cover"
       >
         <div class="row">
           <ContentCard
@@ -56,16 +56,18 @@
 </template>
 
 <script>
-import Splash from 'components/Splash.vue'
+import MatterBackground from 'components/MatterBackground.vue'
 import { MessageBox } from 'components/Boxes'
 import ContentCard from 'components/ContentCard.vue'
+import Splash from 'components/Splash.vue'
 import LazyBackground from 'components/LazyBackground.vue'
 
 export default {
   components: {
-    Splash,
+    MatterBackground,
     MessageBox,
     ContentCard,
+    Splash,
     LazyBackground
   },
   methods: {
