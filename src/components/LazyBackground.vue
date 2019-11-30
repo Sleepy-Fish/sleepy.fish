@@ -50,13 +50,13 @@ export default {
   computed: {
     computedStyle () {
       if (this.imageState === 'loading') {
-        return 'background-image: url(' + this.loadingImage + '); background-size: ' + this.backgroundSize
+        return `background-image: url(${this.loadingImage}); background-size: ${this.backgroundSize}; background-repeat: no-repeat;`
       }
       if (this.imageState === 'error') {
-        return 'background-image: url(' + this.errorImage + '); background-size: ' + this.backgroundSize
+        return `background-image: url(${this.errorImage}); background-size: ${this.backgroundSize}; background-repeat: no-repeat;`
       }
       if (this.imageState === 'loaded') {
-        return 'background-image: url(' + this.asyncImage.src + '); background-size: ' + this.backgroundSize
+        return `background-image: url(${this.asyncImage.src}); background-size: ${this.backgroundSize}; background-repeat: no-repeat;`
       }
       return ''
     }

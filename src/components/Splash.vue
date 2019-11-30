@@ -4,7 +4,7 @@
       :image-source="src"
       :loading-image="loading"
       image-class="splash"
-      background-size="cover"
+      image-size="contain"
     >
       <slot />
     </lazy-background>
