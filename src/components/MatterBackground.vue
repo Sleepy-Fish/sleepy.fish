@@ -4,7 +4,7 @@
 
 <script>
 import decomp from 'poly-decomp'
-import { Engine, Render, World, Bodies, Body, MouseConstraint, Events, Query } from 'matter-js'
+import { Engine, Render, World, Bodies, Body, MouseConstraint, Query, Events } from 'matter-js'
 global.decomp = decomp
 
 const p = { x: window.innerWidth, y: window.innerHeight * 0.75 }
@@ -18,14 +18,27 @@ const right = Bodies.rectangle(p.x + 30, p.y / 2, 60, p.y, {
   isStatic: true
 })
 const dynamics = []
+const colors = [
+  '#212121',
+  '#00796b',
+  '#330066',
+  '#898989'
+]
 const INT = 50
-const EXT = 1000
+const EXT = 100
 for (let i = INT; i < p.x; i += INT) {
-  let dim = 20 + (Math.random() * 90)
+  let dim = 30 + (Math.random() * 30)
   let stagger = Math.random() * INT
   let wave = -EXT + Math.random() * EXT
   for (let j = 0; j < 5; j++) {
-    dynamics.push(Bodies.rectangle(i - (INT / 2) + stagger, wave - (j * EXT), dim, dim))
+    dynamics.push(Bodies.circle(i - (INT / 2) + stagger, wave - (j * EXT), dim, {
+      render: {
+        fillStyle: colors[Math.floor(Math.random() * colors.length)],
+        strokeStyle: '#484848',
+        lineWidth: 3,
+        opacity: 0.4
+      }
+    }))
   }
 }
 
@@ -44,21 +57,6 @@ const listenForResize = function (render) {
   })
 }
 
-const listenForMouse = function (engine) {
-  const mouse = MouseConstraint.create(engine, {})
-  World.add(engine.world, mouse)
-  Events.on(mouse, 'mousemove', function (event) {
-    let bodies = Query.point(dynamics, event.mouse.position)
-    for (const body of bodies) {
-      const dir = Math.random() > 0.5 ? 1 : -1
-      Body.setVelocity(body, { x: body.velocity.x, y: -3 })
-      if (body.angularVelocity < 0.01) {
-        Body.setAngularVelocity(body, Math.PI / 24 * dir)
-      }
-    }
-  })
-}
-
 export default {
   mounted () {
     const engine = Engine.create()
@@ -73,8 +71,20 @@ export default {
       }
     })
     listenForResize(render)
-    listenForMouse(engine)
-    World.add(engine.world, [ground, left, right].concat(dynamics))
+    const mc = MouseConstraint.create(engine, {
+      constraint: {
+        render: {
+          visible: false
+        }
+      }
+    })
+    Events.on(mc, 'mousemove', function (event) {
+      let bodies = Query.point(dynamics, event.mouse.position)
+      for (const body of bodies) {
+        Body.setVelocity(body, { x: body.velocity.x, y: body.velocity.y - 10 })
+      }
+    })
+    World.add(engine.world, [mc, ground, left, right].concat(dynamics))
     Engine.run(engine)
     Render.run(render)
   }
