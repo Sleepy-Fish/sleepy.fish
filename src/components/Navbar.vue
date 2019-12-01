@@ -89,7 +89,7 @@ nav {
 }
 #mobile-nav.mobile-menu {
   position: absolute;
-  z-index: 3;
+  z-index: 99;
   top: 50px;
   right: 5px;
   li:last-of-type > a {

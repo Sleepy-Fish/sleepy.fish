@@ -37,7 +37,7 @@ export default {
     position: absolute;
     top: 40%;
     left: 50%;
-    z-index: 2;
+    z-index: 98;
     transform: translate(-50%, -50%);
     max-width: 40%;
     max-height: 60vh;
