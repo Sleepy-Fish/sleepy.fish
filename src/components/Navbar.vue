@@ -84,9 +84,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+nav {
+  font-family: $heading-font-family;
+}
 #mobile-nav.mobile-menu {
   position: absolute;
-  z-index: 99;
+  z-index: 3;
   top: 50px;
   right: 5px;
   li:last-of-type > a {

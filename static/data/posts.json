@@ -6,7 +6,7 @@
     "author": "J Riley Harrington",
     "img": "static/img/blog/2d-fov-lighting/smooth-lightmesh.png",
     "description": "Casting light and shadows that play off of the environment can be a trick but if done well can add alot to a game! In The Pit, light plays an extremely imporant role not only in the game's asthetics but game play as well. Here is a first look at how we handled 2 dimensional lighting by writing 2D field of view.",
-    "tags": [ "Game", "The Pit" ],
+    "tags": [ "Tutorial", "The Pit" ],
     "markdown":"static/data/md/2d-fov-lighting.md"
   },
   {

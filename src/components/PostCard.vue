@@ -5,7 +5,7 @@
         {{ post.title }}
       </router-link>
     </h4>
-    <small>
+    <small class="post-author">
       Posted: {{ post.author }} - {{ post.date | date }}
     </small>
     <ul class="tags">
@@ -46,6 +46,10 @@ export default {
   padding: 30px;
   .post-title {
     margin: 0;
+    font-family: $lite-heading-font-family
+  }
+  .post-author {
+    font-family: $heading-font-family
   }
   .tags {
     margin: 20px 0px;

@@ -7,8 +7,9 @@ $transparent-bg-lite: rgba(35, 35, 35, 0.4);
 // ==== Typography ==== //
 $font-color: $color-gray-400;
 $heading-font-color: $color-gray-400;
-$font-family: "Trebuchet MS", Helvetica, sans-serif;
-$heading-font-family: "Trebuchet MS", Helvetica, sans-serif;
+$font-family: 'Montserrat', "Trebuchet MS", Helvetica, sans-serif;
+$heading-font-family: 'Bungee', 'Montserrat', "Trebuchet MS", Helvetica, sans-serif;
+$lite-heading-font-family: 'Bungee Hairline', 'Montserrat', "Trebuchet MS", Helvetica, sans-serif;
 
 // ==== NavBar ==== //
 $nav-bg-color:  $transparent-bg;
@@ -39,10 +40,14 @@ $section-secondary-bg-color: $brand-color;
 $section-tertiary-bg-color: $color-gray-300;
 
 // ==== Tags ==== //
+.tags {
+  font-family: $heading-font-family;
+}
 $tag-default-color: $brand-color;
 $tag-colors: (
     // add additional tag types here
     'game'            : $color-cyan-500,
+    'tutorial'        : $color-indigo-800,
     'the-pit'         : $color-orange-700,
     'tech'            : $color-lime-600,
     'announcement'    : $color-deep-purple-500

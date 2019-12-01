@@ -56,11 +56,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .panel-head {
+    font-family: $heading-font-family;
+  }
   .panel {
     position: absolute;
     top: 40%;
     left: 50%;
-    z-index: 99;
+    z-index: 2;
     transform: translate(-50%, -50%);
     max-width: 40%;
     max-height: 60vh;
