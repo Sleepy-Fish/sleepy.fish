@@ -70,6 +70,12 @@ export default {
           imageUrl: 'static/img/corona.png'
         },
         {
+          name: 'The Pit',
+          caption: 'A Untiy game in progress...',
+          url: '#',
+          imageUrl: 'static/img/blog/2d-fov-lighting/smooth-lightmesh.gif'
+        },
+        {
           name: 'Blips',
           caption: 'Planetary conquest for all blip-kind',
           url: 'https://blips.sleepy.fish',

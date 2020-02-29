@@ -227,3 +227,11 @@ And to the editor
 :::
 
 Now we tackle the ray casting
+
+Then make it do this:
+
+::: frame black
+![Add New Layer](static/img/blog/2d-fov-lighting/smoothlight-mesh.gif =350x)
+---
+**Some stuff happens in between**
+:::
