@@ -1,13 +1,15 @@
 <template>
   <div :class="`col col-md-${width}`">
-    <div class="card">
-      <h3 class="card-title">
-        {{ title }}
-      </h3>
-      <div class="img-wrapper">
-        <img :src="src">
+    <a :href="href">
+      <div class="card">
+        <h3 class="card-title">
+          {{ title }}
+        </h3>
+        <div class="img-wrapper">
+          <img :src="src">
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 </template>
 
@@ -16,11 +18,15 @@ export default {
   props: {
     src: {
       type: String,
-      required: true
+      default: 'https://via.placeholder.com/150x100'
     },
     title: {
       type: String,
-      default: ''
+      default: 'Untitled'
+    },
+    href: {
+      type: String,
+      default: '#'
     },
     width: {
       type: String,

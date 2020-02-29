@@ -20,34 +20,11 @@
       >
         <div class="row">
           <ContentCard
-            src="https://via.placeholder.com/150x100"
-            title="Placeholder"
-            width="4"
-          />
-          <ContentCard
-            src="https://via.placeholder.com/150x100"
-            title="Placeholder"
-            width="3"
-          />
-          <ContentCard
-            src="https://via.placeholder.com/150x100"
-            title="Placeholder"
-            width="5"
-          />
-          <ContentCard
-            src="https://via.placeholder.com/150x100"
-            title="Placeholder"
-            width="5"
-          />
-          <ContentCard
-            src="https://via.placeholder.com/150x100"
-            title="Placeholder"
-            width="3"
-          />
-          <ContentCard
-            src="https://via.placeholder.com/150x100"
-            title="Placeholder"
-            width="4"
+            v-for="project in projects"
+            :key="project.name"
+            :href="project.url"
+            :src="project.imageUrl"
+            :title="project.name"
           />
         </div>
       </lazy-background>
@@ -69,6 +46,32 @@ export default {
     ContentCard,
     Splash,
     LazyBackground
+  },
+  data () {
+    return {
+      projects: [
+        {
+          name: 'BogieJS',
+          url: 'https://github.com/Sleepy-Fish/BogieJS',
+          imageUrl: 'static/img/bogie.png'
+        },
+        {
+          name: 'Frog Farts',
+          url: 'https://sleepy.fish/frogfart',
+          imageUrl: 'static/img/frog-farts.png'
+        },
+        {
+          name: 'Corona',
+          url: 'https://sleepy.fish/corona',
+          imageUrl: 'static/img/corona.png'
+        },
+        {
+          name: 'Blips',
+          url: 'https://blips.sleepy.fish',
+          imageUrl: 'static/img/blips.png'
+        }
+      ]
+    }
   },
   methods: {
     test (val) {
