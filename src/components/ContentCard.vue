@@ -5,6 +5,12 @@
         <h3 class="card-title">
           {{ title }}
         </h3>
+        <p
+          v-if="caption"
+          class="card-caption"
+        >
+          {{ caption }}
+        </p>
         <div class="img-wrapper">
           <img :src="src">
         </div>
@@ -24,6 +30,10 @@ export default {
       type: String,
       default: 'Untitled'
     },
+    caption: {
+      type: String,
+      default: null
+    },
     href: {
       type: String,
       default: '#'
@@ -38,6 +48,9 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+  .card-caption {
+    color: $color-gray-400;
+  }
   .img-wrapper {
     position: relative;
     top: 0;

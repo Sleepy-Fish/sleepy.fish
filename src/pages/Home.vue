@@ -25,6 +25,7 @@
             :href="project.url"
             :src="project.imageUrl"
             :title="project.name"
+            :caption="project.caption"
           />
         </div>
       </lazy-background>
@@ -51,24 +52,34 @@ export default {
     return {
       projects: [
         {
-          name: 'BogieJS',
+          name: 'Bogie.JS',
+          caption: 'Javascript collision library built for PIXI.JS',
           url: 'https://github.com/Sleepy-Fish/BogieJS',
           imageUrl: 'static/img/bogie.png'
         },
         {
           name: 'Frog Farts',
+          caption: 'Take to the skies as a farting frog',
           url: 'https://sleepy.fish/frogfart',
           imageUrl: 'static/img/frog-farts.png'
         },
         {
           name: 'Corona',
+          caption: 'Circular brick breaker. Built with Bogie.JS',
           url: 'https://sleepy.fish/corona',
           imageUrl: 'static/img/corona.png'
         },
         {
           name: 'Blips',
+          caption: 'Planetary conquest for all blip-kind',
           url: 'https://blips.sleepy.fish',
           imageUrl: 'static/img/blips.png'
+        },
+        {
+          name: 'Bonsai',
+          caption: 'Watch trees grow. Enthralling!',
+          url: 'https://bonsai.sleepy.fish',
+          imageUrl: 'static/img/bonsai.png'
         }
       ]
     }
