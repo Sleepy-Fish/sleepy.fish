@@ -72,7 +72,7 @@ export default {
         {
           name: 'The Pit',
           caption: 'A Untiy game in progress...',
-          url: '#',
+          url: 'https://sleepy.fish/#/blog/first-post',
           imageUrl: 'static/img/blog/2d-fov-lighting/smooth-lightmesh.gif'
         },
         {
