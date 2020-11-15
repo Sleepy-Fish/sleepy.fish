@@ -54,7 +54,7 @@ export default {
         {
           name: 'Bogie.JS',
           caption: 'Javascript collision library built for PIXI.JS',
-          url: 'https://github.com/Sleepy-Fish/BogieJS',
+          url: 'https://sleepy.fish/bogie',
           imageUrl: 'static/img/bogie.png'
         },
         {

@@ -4,63 +4,15 @@
     "img": "static/img/headshots/riley.jpg",
     "email": "riley@sleepy.fish",
     "position": "Founder + Engineer",
-    "description": "Riley has been a full stack developer for multiple start-ups in many different industries. He's always kept videogames and videogame development as a passion throughout his life. Eventually it just became an obvious next step to merge those threads of his life and start his own videogame start-up.",
-    "real": true
-  },
-  {
-    "name": "Stuart Harrington",
-    "img": "static/img/headshots/stu.jpg",
-    "email": "stu@sleepy.fish",
-    "position": "Art Director",
-    "description": "Brother to Riley. Also a great artist with a love for video games and a respect for details that make games great. Stu is in charge of artistic direction of all games at Sleepy Fish as well as much of the game design and asset creation itself.",
-    "real": true
-  },
-  {
-    "name": "Hannah Rucker",
-    "img": "static/img/headshots/hannah.jpg",
-    "email": "hannah@sleepy.fish",
-    "position": "Operations",
-    "description": "The glue that keeps this company together. I would say she is the unsung hero but we actually find ourselves singing about her often. She takes care of all the business of building a company and keeping wandering minds in line and working effeciently. She if the difference between a functional company and abunch of dweeps on their computers.",
-    "real": true
-  },
-  {
-    "name": "Jeremy Doss",
-    "img": "static/img/headshots/jeremy.jpg",
-    "email": "jeremy@sleepy.fish",
-    "position": "Game Engineer",
-    "description": "Jeremy has a passion for programming and it shows in his work. Originally a .NET programmer, he dove into game programming on a quest to conquer new and uncharted parts of his craft. He works on our core platform games and manages engineering day to day challanges.",
-    "real": true
-  },
-  {
-    "name": "Lauren Grills",
-    "img": "static/img/headshots/lauren.jpg",
-    "email": "lauren@sleepy.fish",
-    "position": "UI Engineer",
-    "description": "She writes clean code. She builds clean UIs. She moves projects forward like the little tank engine that could. That is why we like her. Getting her start in database administration she took on the challange of learning game programming to develop new skills and contibute to a creative and collabrative endevour.",
-    "real": true
-  },
-  {
-    "name": "Caleb Rogers",
-    "img": "static/img/headshots/caleb.jpg",
-    "email": "caleb@sleepy.fish",
-    "position": "Web Engineer",
-    "description": "Caleb has a spirit of someone who will never stop learning knew skills. He came onto our team as a web engineer to help our website and work on browser game jams. He is quickly taking on a role of game engineer as he dives into our core platform games. ",
+    "description": "Riley has been a full stack developer for multiple start-ups in many different industries. He's always kept videogames and videogame development as a passion throughout his life. Eventually it just became an obvious next step to merge those threads of his life and start his own pretend game company.",
     "real": true
   },
   {
     "name": "Could Be You",
     "img": "https://via.placeholder.com/150x150",
     "email": "riley@sleepy.fish",
-    "position": "Animator",
-    "description": "We are looking for help with bringing our art to life. 3D modelling, 2D / 3D rigging and animating. If you have a passion for creating characters, making interactive environments, and ultimately building immersive game experiences we could really use the help!",
-    "real": false
-  },
-  {
-    "name": "Could Be You",
-    "img": "https://via.placeholder.com/150x150",
-    "email": "riley@sleepy.fish",
-    "position": "Designer + Writer",
-    "description": "We have got some great ideas in the works here at Sleepy Fish but we are in constant need of help refining and making those ideas concrete and fleshed out as well as add new great ideas to the pool. This role involves designing game mechanics, story-boarding, writing, and working closely artists and engineers to actualize our shared vision. If you want to get involved in the creative side of designing games we are accepting all the help we can get.",
+    "position": "Co-Founder",
+    "description": "Looking for help and I have more than enough game ideas to go around. So if you have a passion and want to pour yourself into something with very little promise of monetary gain, drop me a line!",
     "real": false
   }
 ]
