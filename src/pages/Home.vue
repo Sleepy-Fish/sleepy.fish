@@ -14,8 +14,6 @@
     </Splash>
     <div class="full-width center-content">
       <lazy-background
-        image-source="/static/img/parchment.png"
-        loading-image="/static/img/parchment-low.png"
         image-class="content"
       >
         <div class="row">
