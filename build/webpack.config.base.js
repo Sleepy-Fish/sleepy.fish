@@ -6,6 +6,7 @@ const staticPath = path.join(__dirname, '..', 'static');
 const distPath = path.join(__dirname, '..', 'dist');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const tailwindcss = require('tailwindcss');
 
 module.exports = {
   resolve: {
@@ -17,21 +18,30 @@ module.exports = {
   entry: srcPath,
   output: {
     path: distPath,
-    filename: "[name].[hash:7].js",
+    filename: "[name].[fullhash].js",
     publicPath: '/',
     clean: true,
   },
   module: {
     rules: [
       {
+        test: /\.s[ac]ss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+          'postcss-loader',
+        ],
+      },
+      {
         test: /\.(js|jsx)$/,
         use: 'eslint-loader',
-        enforce: 'pre'
+        enforce: 'pre',
       }, {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         }
       }, {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -39,7 +49,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: path.join(staticPath, 'img/[name].[hash:7].[ext]')
+            name: path.join(staticPath, 'img/[name].[fullhash].[ext]'),
           }
         }
       }, {
@@ -48,7 +58,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: path.join(staticPath, 'fonts/[name].[hash:7].[ext]')
+            name: path.join(staticPath, 'fonts/[name].[fullhash].[ext]')
           }
         }
       }
@@ -59,12 +69,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
+      favicon: path.join(staticPath, 'favicon.png'),
       inject: true
     }),
     new CopyWebpackPlugin({
       patterns: [{
         from: staticPath,
-        to: distPath,
+        to: path.join(distPath, 'static'),
       }]
     })
   ]
