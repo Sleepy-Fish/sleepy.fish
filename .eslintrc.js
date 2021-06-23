@@ -1,26 +1,20 @@
 module.exports = {
   root: true,
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
   },
   env: {
     browser: true,
     node: true,
-    mocha: true
   },
-  "globals": {
-    "Prism": true,
-    "expect": true
-  },
+  globals: {},
   extends: [
-    'plugin:vue/recommended',
-    'standard'
+    "eslint:recommended",
+    "airbnb",
   ],
-  plugins: [
-    'vue'
-  ],
+  plugins: [],
   rules: {
-    'generator-star-spacing': 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
-  }
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+  },
 }

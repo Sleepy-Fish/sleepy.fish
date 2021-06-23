@@ -1,36 +1,34 @@
 'use strict'
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { VueLoaderPlugin } = require('vue-loader')
-
-const utils = require('./utils')
+const path = require('path');
+const srcPath = path.join(__dirname, '..', 'src')
+const staticPath = path.join(__dirname, '..', 'static');
+const distPath = path.join(__dirname, '..', 'dist');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.vue', '.json', '.md'],
+    extensions: ['.js', '.jsx'],
     alias: {
-      'assets': utils.resolve('assets'),
-      'pages': utils.resolve('src/pages'),
-      'static': utils.resolve('static'),
-      'components': utils.resolve('src/components')
+      '@': staticPath,
     }
   },
-
+  entry: srcPath,
+  output: {
+    path: distPath,
+    filename: "[name].[hash:7].js",
+    publicPath: '/',
+    clean: true,
+  },
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
+        test: /\.(js|jsx)$/,
         use: 'eslint-loader',
         enforce: 'pre'
       }, {
-        test: /\.vue$/,
-        use: 'vue-loader'
-      }, {
-        test: /\.md$/,
-        loader: "raw-loader"
-      },{
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
@@ -41,16 +39,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: utils.assetsPath('img/[name].[hash:7].[ext]')
-          }
-        }
-      }, {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            name: utils.assetsPath('media/[name].[hash:7].[ext]')
+            name: path.join(staticPath, 'img/[name].[hash:7].[ext]')
           }
         }
       }, {
@@ -59,7 +48,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 10000,
-            name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+            name: path.join(staticPath, 'fonts/[name].[hash:7].[ext]')
           }
         }
       }
@@ -72,15 +61,11 @@ module.exports = {
       template: 'index.html',
       inject: true
     }),
-    new VueLoaderPlugin(),
-    new CopyWebpackPlugin([{
-      from: utils.resolve('static/img'),
-      to: utils.resolve('dist/static/img'),
-      toType: 'dir'
-    }, {
-      from: utils.resolve('static/data'),
-      to: utils.resolve('dist/static/data'),
-      toType: 'dir'
-    }])
+    new CopyWebpackPlugin({
+      patterns: [{
+        from: staticPath,
+        to: distPath,
+      }]
+    })
   ]
 }
