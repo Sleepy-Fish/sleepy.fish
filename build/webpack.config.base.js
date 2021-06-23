@@ -6,7 +6,7 @@ const staticPath = path.join(__dirname, '..', 'static');
 const distPath = path.join(__dirname, '..', 'dist');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const tailwindcss = require('tailwindcss');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   resolve: {
@@ -27,7 +27,7 @@ module.exports = {
       {
         test: /\.s[ac]ss$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
           'postcss-loader',
@@ -77,6 +77,10 @@ module.exports = {
         from: staticPath,
         to: path.join(distPath, 'static'),
       }]
-    })
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[fullhash].css',
+      chunkFilename: '[id].[fullhash].css',
+    }),
   ]
 }
