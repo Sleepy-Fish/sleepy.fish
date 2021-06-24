@@ -1,7 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'style/typography';
+@import 'style/variables';
+@import 'style/mixins';
 
-h1 {
-  color: red;
+body {
+  margin-top: $header-height;
+  font-family: $font-family-sans;
+  @include onMobile {
+    margin-top: $header-height-mobile;
+  }
+  border: 5px solid red;
 }
