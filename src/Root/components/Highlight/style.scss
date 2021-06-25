@@ -1,9 +1,0 @@
-@import '../../../style/variables';
-@import '../../../style/mixins';
-
-#HeaderComponent {
-  height: $header-height;
-  @include onMobile {
-    height: $header-height-mobile;
-  }
-}
