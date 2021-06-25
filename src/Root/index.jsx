@@ -1,5 +1,11 @@
 import React from 'react';
+import { Header, Highlight } from './components';
 
-const App = () => <h1>Root</h1>;
-
-export default App;
+const Root = () => (
+  <>
+    <Highlight />
+    <Header />
+    <p>hey</p>
+  </>
+);
+export default Root;
