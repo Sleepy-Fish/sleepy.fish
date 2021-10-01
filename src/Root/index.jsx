@@ -1,11 +1,13 @@
 import React from 'react';
-import { Header, Highlight } from './components';
+import styled from '@emotion/styled';
+import { Header, Content } from './components';
+
+const StyledRoot = styled.div``;
 
 const Root = () => (
-  <>
-    <Highlight />
+  <StyledRoot className="ml-1 mt-header-m md:mt-header-d">
     <Header />
-    <p>hey</p>
-  </>
+    <Content />
+  </StyledRoot>
 );
 export default Root;
