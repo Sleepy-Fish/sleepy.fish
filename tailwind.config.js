@@ -21,25 +21,11 @@ module.exports = {
     },
     extend: {
       spacing: {
-        'header-m': '110px',
-        'header-d': '150px',
+        'header-m': '160px',
+        'header-d': '210px',
+        'footer-m': '80px',
+        'footer-d': '120px',
       },
-      keyframes: {
-        'scroll-x': {
-            '0%': {
-              'background-position': '0% 0%',
-            },
-            '50%': {
-              'background-position': '50% 50%',
-          },
-            '100%': {
-                'background-position': '100% 100%',
-            },
-        }
-        },
-        animation: {
-            'scroll-x': 'scroll-x 1s linear infinite',
-        }
     },
   },
   // prefix: like screen sizes md: or mouse actions hover:
