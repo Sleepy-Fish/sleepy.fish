@@ -7,10 +7,7 @@ const Footer = () => (
       riley@sleepy.fish
     </div>
     <div className="flex items-center justify-center w-1/3 h-full ml-2 text-lg font-light text-center text-primary hover:text-primary">
-      caleb@sleepy.fish
-    </div>
-    <div className="flex items-center justify-center w-1/3 h-full ml-2 text-lg font-light text-center text-primary hover:text-primary">
-      That&apos;s all...
+      caleb@calebjay.com
     </div>
   </nav>
 );
