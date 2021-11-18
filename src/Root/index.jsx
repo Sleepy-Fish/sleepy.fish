@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, Content, Footer } from './components';
 
 const Root = () => (
-  <div className="w-screen max-w-full">
+  <div className="w-screen max-w-full h-screen max-h-full">
     <Header />
     <Content />
     <Footer />

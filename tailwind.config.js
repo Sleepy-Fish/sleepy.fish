@@ -19,6 +19,11 @@ module.exports = {
       sans: ['ChakraPetch', 'sans-serif'],
       serif: ['serif'],
     },
+    height: {
+      header: '20vh',
+      content: '60vh',
+      footer: '20vh',
+    },
     extend: {
       spacing: {
         'header-m': '160px',
