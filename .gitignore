@@ -1,4 +1,5 @@
 .DS_Store
 .env
-dist
+dist/out.css
+dist/out.js
 node_modules

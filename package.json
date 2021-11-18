@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --progress",
-    "build": "NODE_ENV=production node build.js",
+    "build": "NODE_ENV=production npx tailwindcss -i ./src/index.scss -o ./dist/out.css && node build.js",
     "lint": "eslint --ext .js,.jsx src",
     "lint:fix": "eslint --ext .js,.jsx src --fix"
   },
@@ -16,10 +16,10 @@
   "author": "J Riley Harrington <jrileyharrington@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@deanc/esbuild-plugin-postcss": "^1.0.2",
     "babel-loader": "^8.2.2",
     "esbuild": "^0.13.14",
     "esbuild-sass-plugin": "^1.7.0",
-    "esbuild-vue": "^0.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
