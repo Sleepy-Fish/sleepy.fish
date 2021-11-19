@@ -22,12 +22,6 @@ module.exports = {
       serif: ['serif'],
     },
     extend: {
-      spacing: {
-        'header-m': '160px',
-        'header-d': '210px',
-        'footer-m': '80px',
-        'footer-d': '120px',
-      },
       height: {
         header: '20vh',
         content: '60vh',
