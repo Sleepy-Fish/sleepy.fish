@@ -3,3 +3,4 @@
 dist/out.css
 dist/out.js
 node_modules
+.log/
