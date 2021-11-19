@@ -6,7 +6,7 @@ const Content = () => (
       <p className="text-center text-highlight">
         This site is under construction. There may be a demo that you can find
         {' '}
-        <a className="underline text-primary" href="https://demo.sleepy.fish">here</a>
+        <a className="underline text-href" href="https://demo.sleepy.fish">here</a>
         .
       </p>
     </div>

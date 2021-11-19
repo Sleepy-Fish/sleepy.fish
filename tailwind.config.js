@@ -14,6 +14,8 @@ module.exports = {
       primary: '#146369',
       secondary: '#024143',
       highlight: '#3fbd93',
+      textprimary: '#09BAC3',
+      href: '#C2A3FF',
     },
     fontFamily: {
       sans: ['ChakraPetch', 'sans-serif'],
