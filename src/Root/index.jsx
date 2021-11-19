@@ -1,11 +1,9 @@
 import React from 'react';
-import { Header, Content, Footer } from './components';
+import { Home } from './views';
 
 const Root = () => (
   <div className="w-screen max-w-full h-screen max-h-full">
-    <Header />
-    <Content />
-    <Footer />
+    <Home />
   </div>
 );
 export default Root;
