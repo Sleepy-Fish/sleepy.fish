@@ -14,6 +14,8 @@ module.exports = {
       primary: '#146369',
       secondary: '#024143',
       highlight: '#3fbd93',
+      textprimary: '#09BAC3',
+      href: '#C2A3FF',
     },
     fontFamily: {
       sans: ['ChakraPetch', 'sans-serif'],
@@ -25,6 +27,11 @@ module.exports = {
         'header-d': '210px',
         'footer-m': '80px',
         'footer-d': '120px',
+      },
+      height: {
+        header: '20vh',
+        content: '60vh',
+        footer: '20vh',
       },
     },
   },
