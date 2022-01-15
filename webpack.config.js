@@ -36,10 +36,6 @@ if (prod) {
       chunkFilename: '[id].[contenthash].css',
     })
   );
-} else {
-  plugins.push(
-    new webpack.HotModuleReplacementPlugin()
-  );
 }
 
 /* ###############################################
@@ -132,16 +128,24 @@ if (prod) {
   };
 } else {
   config.devServer = {
-    clientLogLevel: 'warning',
-    hot: true,
-    contentBase: '/',
     compress: true,
     host: DEV_HOST,
     port: DEV_PORT,
     open: true,
-    overlay: { warnings: false, errors: true },
-    publicPath: '/',
-    quiet: false,
+    static: {
+      directory: path.resolve(__dirname, "static"),
+    },
+    devMiddleware: {
+      publicPath: '/',
+    },
+    client: {
+      logging: "warn",
+      overlay: {
+        errors: true,
+        warnings: true,
+      },
+      progress: true,
+    },
   };
 }
 
