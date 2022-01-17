@@ -1,11 +1,22 @@
 import React from 'react';
 
 const Header = () => (
-  <nav className="relative flex flex-row items-center w-full bg-black h-header">
-    <div className="flex items-center justify-center w-full h-full ml-2 text-5xl font-light text-center text-textprimary hover:contrast">
-      Sleepy Fish
+  <nav className="header">
+    <div className="header-splash">
+      <div className="header-splash-logo">i</div>
+      <div className="header-splash-title">Sleepy Fish Games</div>
     </div>
-    <div className="absolute bottom-0 w-full h-2 bg-primary bg-gradient-to-r from-primary via-highlight to-secondary" />
+    <div className="header-nav">
+      <div className="header-nav-notice">
+        <div className="header-nav-notice-text">Rooni&apos;s Run 1.0 Release!</div>
+      </div>
+      <div className="header-nav-links">
+        <div className="header-nav-link">Home</div>
+        <div className="header-nav-link">Devlog</div>
+        <div className="header-nav-link">Games</div>
+        <div className="header-nav-link">Team</div>
+      </div>
+    </div>
   </nav>
 );
 
