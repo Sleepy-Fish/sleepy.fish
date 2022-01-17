@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import styled from '@emotion/styled';
 
@@ -94,10 +94,33 @@ const NavBarLink = styled.a`
   font-size: 32px;
   line-height: 80px;
   text-decoration: none;
+  cursor: pointer;
 `;
 
+const routes = {
+  home: {
+    icon: 'fish',
+  },
+  devlog: {
+    icon: 'quill',
+  },
+  games: {
+    icon: 'd-pad',
+  },
+  team: {
+    icon: 'team',
+  },
+};
+
 const Header = () => {
-  const [navIcon] = useState('fish');
+  const [route, setRoute] = useState('home');
+  const [icon, setIcon] = useState('fish');
+  const [noticeText] = useState('News and Alerts Go Here!');
+  useEffect(() => {
+    if (route) {
+      setIcon(routes[route].icon);
+    }
+  }, [route]);
   return (
     <Head>
       <Splash>
@@ -106,16 +129,36 @@ const Header = () => {
       </Splash>
       <Nav>
         <NoticeBar>
-          Rooni&apos;s Run 1.0 Release!
+          {noticeText}
         </NoticeBar>
         <NavBarLinks>
-          <NavBarLink href="/">Home</NavBarLink>
-          <NavBarLink href="/devlog">Devlog</NavBarLink>
-          <NavBarLink href="/games">Games</NavBarLink>
-          <NavBarLink href="/team">Team</NavBarLink>
+          <NavBarLink
+            style={{ textDecoration: route === 'home' ? 'underline' : 'none' }}
+            onClick={() => setRoute('home')}
+          >
+            Home
+          </NavBarLink>
+          <NavBarLink
+            style={{ textDecoration: route === 'devlog' ? 'underline' : 'none' }}
+            onClick={() => setRoute('devlog')}
+          >
+            Devlog
+          </NavBarLink>
+          <NavBarLink
+            style={{ textDecoration: route === 'games' ? 'underline' : 'none' }}
+            onClick={() => setRoute('games')}
+          >
+            Games
+          </NavBarLink>
+          <NavBarLink
+            style={{ textDecoration: route === 'team' ? 'underline' : 'none' }}
+            onClick={() => setRoute('team')}
+          >
+            Team
+          </NavBarLink>
         </NavBarLinks>
       </Nav>
-      <NavIcon style={{ backgroundImage: `url(/static/${navIcon}.svg)` }} />
+      <NavIcon style={{ backgroundImage: `url(/static/icons/${icon}.svg)` }} />
     </Head>
   );
 };
