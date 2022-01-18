@@ -1,8 +1,6 @@
-import React from 'react';
-
 import styled from '@emotion/styled';
 
-const Background = styled.div`
+export const Background = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -15,11 +13,3 @@ const Background = styled.div`
   padding-right: 17px;
   box-sizing: content-box;
 `;
-
-const Content = ({ children }) => (
-  <Background>
-    {children}
-  </Background>
-);
-
-export default Content;
