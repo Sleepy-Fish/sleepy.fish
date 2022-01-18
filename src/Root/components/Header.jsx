@@ -94,7 +94,9 @@ const NoticeBar = styled.div`
 `;
 
 const NoticeBarText = styled.div`
+  position: relative;
   width: 100%;
+  height: 60px;
   margin: 0;
   padding: 0 30px;
   background-color: black;
@@ -108,6 +110,24 @@ const NoticeBarText = styled.div`
   @media screen and (max-width: ${sm}) {
     font-size: 28px;
     line-height: 34px;
+    height: 34px;
+  }
+`;
+
+const ScrollingText = styled.span`
+  position: absolute;
+  text-align: center;
+  width: 130%;
+  top: 3px;
+  transform:translateX(100%);
+  animation: scroll-left 10s linear infinite;
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% { 
+      transform: translateX(-100%); 
+    }
   }
 `;
 
@@ -220,7 +240,7 @@ const Header = () => {
       <Nav>
         <NoticeBar>
           <NoticeBarText>
-            {noticeText}
+            <ScrollingText>{noticeText}</ScrollingText>
           </NoticeBarText>
         </NoticeBar>
         <NavBarLinks>
