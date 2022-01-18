@@ -1,8 +1,17 @@
 import React from 'react';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import styled from '@emotion/styled';
 
-import { Home } from './views';
+import {
+  Home,
+  Devlog,
+  Games,
+  Team,
+} from './views';
+
+import { Header, Footer } from './components';
 
 const App = styled.div`
   width: 100%;
@@ -13,7 +22,16 @@ const App = styled.div`
 
 const Root = () => (
   <App>
-    <Home />
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/devlog" element={<Devlog />} />
+        <Route path="/games" element={<Games />} />
+        <Route path="/team" element={<Team />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   </App>
 );
 export default Root;

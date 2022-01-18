@@ -9,8 +9,10 @@ const Background = styled.div`
   background-color: #282833;
 `;
 
-const Content = () => (
-  <Background>Hello</Background>
+const Content = ({ children }) => (
+  <Background>
+    {children}
+  </Background>
 );
 
 export default Content;

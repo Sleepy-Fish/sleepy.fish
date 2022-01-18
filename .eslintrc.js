@@ -18,5 +18,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'max-len': 'off',
     'no-unused-vars': 'warn',
+    'react/prop-types': ['off'],
   },
 }

@@ -135,6 +135,7 @@ if (prod) {
     static: {
       directory: path.resolve(__dirname, "static"),
     },
+    historyApiFallback: true,
     devMiddleware: {
       publicPath: '/',
     },

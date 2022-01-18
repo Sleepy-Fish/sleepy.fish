@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import styled from '@emotion/styled';
 
 const Head = styled.nav`
@@ -113,12 +115,14 @@ const routes = {
 };
 
 const Header = () => {
+  const navigate = useNavigate();
   const [route, setRoute] = useState('home');
   const [icon, setIcon] = useState('fish');
   const [noticeText] = useState('News and Alerts Go Here!');
   useEffect(() => {
     if (route) {
       setIcon(routes[route].icon);
+      navigate(route !== 'home' ? route : '/');
     }
   }, [route]);
   return (

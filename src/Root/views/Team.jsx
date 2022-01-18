@@ -1,10 +1,10 @@
 import React from 'react';
 import { Content } from '../components';
 
-const Home = () => (
+const Team = () => (
   <Content>
-    <b>Home</b>
+    <b>Team</b>
   </Content>
 );
 
-export default Home;
+export default Team;
