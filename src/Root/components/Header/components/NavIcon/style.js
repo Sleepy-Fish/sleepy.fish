@@ -15,9 +15,9 @@ export const Icon = styled.div`
   background-repeat: no-repeat;
   background-position: center center;
   @media screen and (max-width: ${BREAKPOINT.LG}) {
-    width: 120px;
-    height: 120px;
-    background-size: 64px;
+    width: 110px;
+    height: 110px;
+    background-size: 58px;
     left: 46%;
     bottom: -20px;
   }
