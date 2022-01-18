@@ -86,7 +86,6 @@ const NoticeBar = styled.div`
   padding: 5px 20px;
   display: flex;
   align-items: center;
-  border: 1px solid red;
   @media screen and (max-width: ${md}) {
     width: 90%;
     padding: 5px 5%;
@@ -140,7 +139,6 @@ const NavBarLinks = styled.div`
   justify-content: space-evenly;
   width: 50%;
   margin-left: 10%;
-  border: 1px solid green;
   @media screen and (max-width: ${md}) {
     width: 80%;
     margin-left: 20%;
