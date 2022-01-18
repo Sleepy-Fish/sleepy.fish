@@ -8,44 +8,39 @@ const lg = '1270px';
 const md = '769px';
 const sm = '481px';
 
+const headerHeight = '20vh';
+const splashHeight = '12vh';
+const navHeight = '8vh';
+const smNavHeight = '4vh';
+
 const Head = styled.nav`
   position: relative;
   width: 100%;
-  height: 240px;
+  height: ${headerHeight};
   margin: 0;
   box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
-  @media screen and (max-width: ${sm}) {
-    height: 200px;
-  }
 `;
 
 const Splash = styled.div`
   width: 100%;
-  height: 160px;
+  height: ${splashHeight};
   background: linear-gradient(180deg, #C0F4FF 0%, #5E89C9 50%, #202B4F 100%);
   display: flex;
   flex-direction: row;
-  @media screen and (max-width: ${sm}) {
-    height: 100px;
-  }
 `;
 
 const SplashLogo = styled.div`
-  width: 160px;
-  height: 160px;
+  width: ${splashHeight};
+  height: ${splashHeight};
   background-image: url('static/logo.png');
   background-size: cover;
   background-repeat: no-repeat;
-  @media screen and (max-width: ${sm}) {
-    width: 100px;
-    height: 100px;
-  }
 `;
 
 const SplashTitle = styled.div`
   display: flex;
   align-items: flex-end;
-  height: 160px;
+  height: ${splashHeight};
   color: white;
   font-family: StickNoBills, Impact, sans-serif;
   font-size:72px;
@@ -59,40 +54,36 @@ const SplashTitle = styled.div`
     font-size: 48px;
   }
   @media screen and (max-width: ${sm}) {
-    height: 100px;
     font-size: 36px;
   }
 `;
 
 const Nav = styled.div`
   width: 100%;
-  height: 80px;
+  height: ${navHeight};
   background-color: #202B4F;
   display: flex;
   flex-direction: row;
   @media screen and (max-width: ${md}) {
-    height: 160px;
-    flex-direction: column;
-  }
-  @media screen and (max-width: ${sm}) {
-    height: 100px;
     flex-direction: column;
   }
 `;
 
 const NoticeBar = styled.div`
   width: 50%;
+  height: ${navHeight};
   margin: 0;
   padding: 5px 20px;
   display: flex;
   align-items: center;
   @media screen and (max-width: ${md}) {
     width: 90%;
+    height: ${smNavHeight};
     padding: 5px 5%;
   }
 `;
 
-const NoticeBarText = styled.div`
+const NoticeBarText = styled.a`
   position: relative;
   width: 100%;
   height: 60px;
@@ -106,7 +97,8 @@ const NoticeBarText = styled.div`
   line-height: 60px;
   white-space: nowrap;
   overflow: hidden;
-  @media screen and (max-width: ${sm}) {
+  cursor: pointer;
+  @media screen and (max-width: ${md}) {
     font-size: 28px;
     line-height: 34px;
     height: 34px;
@@ -116,7 +108,7 @@ const NoticeBarText = styled.div`
 const ScrollingText = styled.span`
   position: absolute;
   text-align: center;
-  width: 130%;
+  width: 100%;
   top: 3px;
   transform:translateX(100%);
   animation: scroll-left 10s linear infinite;
@@ -132,6 +124,7 @@ const ScrollingText = styled.span`
 
 const NavBarLinks = styled.div`
   width: 40%;
+  height: ${navHeight};
   margin: 0;
   display: flex;
   flex-direction: row;
@@ -141,11 +134,11 @@ const NavBarLinks = styled.div`
   margin-left: 10%;
   @media screen and (max-width: ${md}) {
     width: 80%;
+    height: ${smNavHeight};
     margin-left: 20%;
   }
   @media screen and (max-width: ${sm}) {
     width: 80%;
-    height: 50px;
     margin-left: 60px;
   }
 `;
@@ -187,12 +180,15 @@ const NavIcon = styled.div`
     width: 120px;
     height: 120px;
     background-size: 64px;
-    left: 50%;
+    left: 46%;
     bottom: -20px;
   }
   @media screen and (max-width: ${md}) {
-    left: 5px;
-    bottom: -100px;
+    width: 80px;
+    height: 80px;
+    background-size: 48px;
+    left: 5%;
+    bottom: -10%;
   }
   @media screen and (max-width: ${sm}) {
     width: 60px;
@@ -223,6 +219,7 @@ const Header = () => {
   const [route, setRoute] = useState('home');
   const [icon, setIcon] = useState('fish');
   const [noticeText] = useState('News and Alerts Go Here!');
+  const [noticeLink] = useState('https://sleepy.fish');
   useEffect(() => {
     if (route) {
       setIcon(routes[route].icon);
@@ -237,7 +234,7 @@ const Header = () => {
       </Splash>
       <Nav>
         <NoticeBar>
-          <NoticeBarText>
+          <NoticeBarText href={noticeLink}>
             <ScrollingText>{noticeText}</ScrollingText>
           </NoticeBarText>
         </NoticeBar>
