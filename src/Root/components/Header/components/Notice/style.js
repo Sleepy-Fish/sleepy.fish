@@ -48,13 +48,13 @@ export const Text = styled.span`
   width: 100%;
   top: 3px;
   transform:translateX(100%);
-  animation: scroll-left 10s linear infinite;
+  animation: scroll-left 8s linear infinite;
   @keyframes scroll-left {
     0% {
       transform: translateX(100%);
     }
     100% { 
-      transform: translateX(-100%); 
+      transform: translateX(-150%); 
     }
   }
 `;

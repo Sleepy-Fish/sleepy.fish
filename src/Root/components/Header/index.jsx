@@ -18,8 +18,8 @@ const Header = () => {
   const location = useLocation();
   const [navRoute, setNavRoute] = useState(location.pathname);
   const [navIcon, setNavIcon] = useState('fish');
-  const [noticeText] = useState('New Beast Tactics Game is Underway!');
-  const [noticeLink] = useState('https://devlog.sleepy.fish/posts/beast-tactics/');
+  const [noticeText] = useState('See our GMTK Jam Submission!');
+  const [noticeLink] = useState('https://jrileyh.itch.io/tama-get-out');
 
   const setRoute = (route, icon) => {
     setNavIcon(icon);
